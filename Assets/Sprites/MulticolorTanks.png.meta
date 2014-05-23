@@ -1,0 +1,625 @@
+fileFormatVersion: 2
+guid: 518392c0432021a40bcb9b80a233e774
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: MulticolorTanks_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_7
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 228
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_10
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_12
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_13
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_14
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_15
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 196
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_16
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_18
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_19
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_20
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_21
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_22
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_23
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 164
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_25
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_26
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_27
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_28
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_29
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_30
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_31
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 132
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_33
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_34
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_36
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_37
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_38
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_39
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 100
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_41
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_42
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_43
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_44
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_45
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_46
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_47
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 68
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_48
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_49
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_50
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_51
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_52
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_53
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_54
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_55
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 36
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_56
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_57
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_58
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_59
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_60
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_61
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_62
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: MulticolorTanks_63
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 4
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
