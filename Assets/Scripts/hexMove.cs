@@ -55,7 +55,7 @@ public class hexMove : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//if (isAvail == false) {
-		if( transform.parent.GetComponent<unitStatScript>().active)
+		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
 		{
 			foreach (Transform child in transform) {
 				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
