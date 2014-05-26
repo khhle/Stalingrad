@@ -12,9 +12,14 @@ public class moveGrandParent : MonoBehaviour {
 	public bool isReset = false;
 
 	public bool isClick = false;
+
+	public GameController gameController;
 	// Use this for initialization
 	void Start () {
-	
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
 	}
 	
 	// Update is called once per frame
@@ -35,7 +40,7 @@ public class moveGrandParent : MonoBehaviour {
 			float y1 = this.transform.position.y;
 			float z1 = this.transform.position.z;
 			if(isCollide == false)
-				this.transform.position = new Vector3(x1,y1,z1-20); //0
+				this.transform.position = new Vector3(x1,y1,0); //0
 			//else
 				//this.transform.position = new Vector3(x1,y1,z1+20);//0
 
@@ -43,16 +48,16 @@ public class moveGrandParent : MonoBehaviour {
 		}
 
 
-		if (isClick == true)
-			counter--;
+		//if (isClick == true)
+			//counter--;
 
-		if (counter < 0) {
+		if (!isClick) {
 
 				float x1 = this.transform.position.x;
 				float y1 = this.transform.position.y;
 				float z1 = this.transform.position.z;
 				if(isCollide == false)
-					this.transform.position = new Vector3(x1,y1,z1+20);
+					this.transform.position = new Vector3(x1,y1,20);
 
 
 				//moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
@@ -63,8 +68,7 @@ public class moveGrandParent : MonoBehaviour {
 				//child.transform.position = new Vector3 (x1, y1, z1 - 20);
 				//movObj.isAvail = false;
 				//child is your child transform
-			counter = 60;
-			isClick = false;
+			//isClick = false;
 			//isReset = true;
 			//isCollide = false;
 			}
@@ -98,8 +102,20 @@ public class moveGrandParent : MonoBehaviour {
 		{//GameObject obj_parent = gameObject.transform.parent.transform.parent.transform.position;
 						//GameObject obj_grand_parent =  obj_parent.transform.parent;
 			gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
+			switch(gameController.playerTurn)
+			{
+			case 1:
+				gameController.playerTurn = 2;
+				break;
+			case 2:
+				gameController.playerTurn = 1;
+				break;
+			}
+			//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
+			transform.parent.GetComponent<hexMove>().hideMoves();
 			//this.transform.position = new Vector3(x1,y1,z1+20);
 			//isAvail = false;
+
 		}
 
 	}

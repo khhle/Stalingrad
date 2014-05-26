@@ -55,28 +55,46 @@ public class hexMove : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//if (isAvail == false) {
+		if( transform.parent.GetComponent<unitStatScript>().active)
+		{
 			foreach (Transform child in transform) {
+				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+				if (movObj.isClick)
+				{
+					movObj.isClick = false;
+				}
+				else
+				{
 					float x1 = child.transform.position.x;
 					float y1 = child.transform.position.y;
 					float z1 = child.transform.position.z;
-
-					moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
 					//if (movObj.col1 == false) {
 						//child.transform.position = new Vector3 (x1, y1, z1 - 20);
-						movObj.isClick = true;
-			movObj.isInit = false;
-			movObj.isInitCollide = false;
-			movObj.isCollide = false;
-					//} else if (movObj.col1 == false)
+					movObj.isClick = true;
+					movObj.isInit = false;
+					movObj.isInitCollide = false;
+					movObj.isCollide = false;
+						//} else if (movObj.col1 == false)
 					//{
 					//	child.transform.position = new Vector3 (x1, y1+10, z1 + 20);
 					//	movObj.isAvail = false;
 					//}
 					//child is your child transform
+				}
 			}
+		}
 
 			//isAvail = true;
 		//}
+	}
+
+	//use this for hiding the green hex objects.
+	public void hideMoves()
+	{
+		foreach (Transform child in transform) {
+			moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+			movObj.isClick = false;
+		}
 	}
 
 }
