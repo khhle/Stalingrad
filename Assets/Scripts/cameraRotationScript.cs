@@ -5,7 +5,8 @@ public class cameraRotationScript : MonoBehaviour {
 
 	private Animator animator;
 	public int turnNumber = 1;
-	private int oldTurn;
+	private int oldTurn = 7;
+	//khan is a khan
 	void Awake()
 	{
 		// ...
