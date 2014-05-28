@@ -102,17 +102,9 @@ public class moveGrandParent : MonoBehaviour {
 		{//GameObject obj_parent = gameObject.transform.parent.transform.parent.transform.position;
 						//GameObject obj_grand_parent =  obj_parent.transform.parent;
 			gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
-			switch(gameController.playerTurn)
-			{
-			case 1:
-				gameController.playerTurn = 2;
-				break;
-			case 2:
-				gameController.playerTurn = 1;
-				break;
-			}
 			//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
 			transform.parent.GetComponent<hexMove>().hideMoves();
+			transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
 			//this.transform.position = new Vector3(x1,y1,z1+20);
 			//isAvail = false;
 

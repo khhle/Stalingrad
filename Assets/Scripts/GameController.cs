@@ -25,10 +25,12 @@ public class GameController : MonoBehaviour {
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == 1)
 			{
 				player1Units += 1;
+				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 			}
 			else if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == 2)
 			{
 				player2Units += 1;
+				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 			}
 		}
 		playerTurn = 1;
@@ -62,7 +64,19 @@ public class GameController : MonoBehaviour {
 		playerTurnText.text = "Player " + playerTurn + "'s turn";
 	}
 
-	void GameOver(int winner)
+	public void turnChange (int player)
+	{
+		playerTurn = player;
+		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
+		for (int i = 0; i < unitCounter.Length; i++) {
+			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == player)
+			{
+				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
+			}
+		}
+	}
+
+	public void GameOver(int winner)
 	{
 		isGameOver = true;
 		GameOverText.text = "Player " + winner + " wins!\n" +

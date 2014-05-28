@@ -65,21 +65,24 @@ public class hexMove : MonoBehaviour {
 				}
 				else
 				{
-					float x1 = child.transform.position.x;
-					float y1 = child.transform.position.y;
-					float z1 = child.transform.position.z;
-					//if (movObj.col1 == false) {
-						//child.transform.position = new Vector3 (x1, y1, z1 - 20);
-					movObj.isClick = true;
-					movObj.isInit = false;
-					movObj.isInitCollide = false;
-					movObj.isCollide = false;
-						//} else if (movObj.col1 == false)
-					//{
-					//	child.transform.position = new Vector3 (x1, y1+10, z1 + 20);
-					//	movObj.isAvail = false;
-					//}
-					//child is your child transform
+					//checks to see if it has any moves remaining
+					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0){
+						float x1 = child.transform.position.x;
+						float y1 = child.transform.position.y;
+						float z1 = child.transform.position.z;
+						//if (movObj.col1 == false) {
+							//child.transform.position = new Vector3 (x1, y1, z1 - 20);
+						movObj.isClick = true;
+						movObj.isInit = false;
+						movObj.isInitCollide = false;
+						movObj.isCollide = false;
+							//} else if (movObj.col1 == false)
+						//{
+						//	child.transform.position = new Vector3 (x1, y1+10, z1 + 20);
+						//	movObj.isAvail = false;
+						//}
+						//child is your child transform
+					}
 				}
 			}
 		}

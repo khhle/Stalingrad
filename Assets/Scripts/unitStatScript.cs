@@ -6,6 +6,16 @@ public class unitStatScript : MonoBehaviour {
 	public int playerOwner;
 	public int attack;
 	public int defense;
+	public int health;
+	public int moves;
+	public int range;
+
+	public int movesRemaining;
+
+	public bool canShootInfantry;
+	public bool canShootTank;
+	public bool canShootPlane;
+	public bool hasSplash;
 
 	public GUIText statText;
 
@@ -13,7 +23,6 @@ public class unitStatScript : MonoBehaviour {
 	public string unitType;
 
 	//keeps track of how far the unit can move
-	public int moves;
 
 	//checks if it's the player's turn to move
 	public bool activeTurn = false;
@@ -29,9 +38,17 @@ public class unitStatScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		statText.transform.position = new Vector2 ((transform.position.x + 8) /16f, (transform.position.y + 5) / 10f);
+		if(gameController.playerTurn == 1)
+		{
+			statText.transform.position = new Vector2 ((transform.position.x + 8) /16f, (transform.position.y + 5) / 10f);
+		}
+		else
+		{
+			statText.transform.position = new Vector2 (1 - ((transform.position.x + 8) /16f), 1 - ((transform.position.y + 5) / 10f));
+		}
+
 		if (statText != null)
-			statText.text = attack + "         " + defense;
+			statText.text = attack + "  "+ health +"  " + defense;
 
 		if(gameController.playerTurn == playerOwner)
 		{
