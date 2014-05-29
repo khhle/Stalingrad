@@ -3,6 +3,9 @@ using System.Collections;
 
 public class unitStatScript : MonoBehaviour {
 
+	public bool isMoving = false;
+	public bool isAttacking = false;
+
 	public int playerOwner;
 	public int attack;
 	public int defense;
@@ -63,4 +66,20 @@ public class unitStatScript : MonoBehaviour {
 		}
 
 	}
+
+	//creates a button to skip movement phase
+	void OnGUI(){
+		if (isMoving && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nMovement Phase", "moveTag"))) {
+			gameController.attackStep = true;
+			isMoving = false;
+			gameController.hideAllMoves();
+		}
+		else if (isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
+			hasAttacked = true;
+			isAttacking = false;
+			gameController.hideAllMoves();
+		}
+	}
+
+
 }

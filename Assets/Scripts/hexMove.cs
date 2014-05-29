@@ -18,7 +18,8 @@ public class hexMove : MonoBehaviour {
  	}
 	void Update()
 	{
-
+		if(transform.parent.GetComponent<unitStatScript>().movesRemaining <= 0)
+			parentStats.isMoving = false;
 	}
 
 
@@ -43,11 +44,17 @@ public class hexMove : MonoBehaviour {
 
 		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
 		{
+
 			foreach (Transform child in transform) {
 				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
 				//red_hex redhex = child.GetComponent<red_hex> ();
 				if (movObj.isClick)
 				{
+					//if you click on the unit while in movement phase, remove skip button
+					parentStats.isMoving = false;
+					//if you click on the unit while in attack phase, remove skip button
+					parentStats.isAttacking = false;
+
 					movObj.isClick = false;
 					//redhex.isClick = false;
 				}
@@ -59,6 +66,9 @@ public class hexMove : MonoBehaviour {
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;
 
+						//if you click on unit in movement phase give the option for the skip
+						parentStats.isMoving = true;
+
 						movObj.isClick = true;
 						movObj.isInit = false;
 						movObj.isInitCollide = false;
@@ -66,9 +76,15 @@ public class hexMove : MonoBehaviour {
 
 					}
 					else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
+						//if the button hasn't been pressed to skip move, hide the button
+						parentStats.isMoving = false;
+
 						float x1 = child.transform.position.x;
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;
+
+						//if you click on the unit in attack phase give the option for the skip
+						parentStats.isAttacking = true;
 						
 						movObj.isClick = true;
 						movObj.isInit = false;

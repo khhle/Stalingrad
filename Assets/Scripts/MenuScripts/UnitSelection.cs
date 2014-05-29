@@ -36,10 +36,6 @@ public class UnitSelection : MonoBehaviour {
 		GT_p2_Credits_Remaining = GameObject.Find ("p2 credits remaining");
 		GT_player1 = GameObject.Find ("Player1Pick");
 		GT_player2 = GameObject.Find ("Player2Pick");
-		
-		//set show credits remaining to off
-		//GT_p2_Credits_Remaining.guiText.enabled = false;
-		//GT_p1_Credits_Remaining.guiText.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -59,22 +55,6 @@ public class UnitSelection : MonoBehaviour {
 			GT_player2.renderer.material.color = Color.green;
 			GT_player1.renderer.material.color = Color.red;
 		}
-		//If player1 holds tab they can view their credits remaining
-		/*if(Input.GetKeyDown(KeyCode.Tab)){
-			GT_p1_Credits_Remaining.guiText.enabled = true;
-		}
-		if (Input.GetKeyUp (KeyCode.Tab)) {
-			GT_p1_Credits_Remaining.guiText.enabled = false;
-		}*/
-
-		//If player2 holds enter they can view their credits remaining
-		/*if(Input.GetKeyDown(KeyCode.Return)){
-			GT_p2_Credits_Remaining.guiText.enabled = true;
-		}
-		if (Input.GetKeyUp (KeyCode.Return)) {
-			GT_p2_Credits_Remaining.guiText.enabled = false;
-		}*/
-
 
 		if(player1_Credits == 0 && player2_Credits == 0){
 			Invoke ("beginBattle", 3.0f);
