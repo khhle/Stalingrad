@@ -9,29 +9,6 @@ public class hexMove : MonoBehaviour {
 
 	void Update()
 	{
-		/*if (isAvail == true)
-			counter--;
-		if (counter < 0) {
-			foreach (Transform child in transform)
-			{
-				float x1 = child.transform.position.x;
-				float y1 = child.transform.position.y;
-				float z1 = child.transform.position.z;
-				//child.transform.position = new Vector3(x1,y1,z1+20);
-
-
-				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
-				if(movObj.isInit != true)
-					child.transform.position = new Vector3(x1,y1,z1+20);
-
-				//if (movObj.col1 == null) {
-				//child.transform.position = new Vector3 (x1, y1, z1 - 20);
-				movObj.isAvail = false;
-				//child is your child transform
-			}
-			counter = 60;
-			isAvail = false;
-		}*/
 
 	}
 
@@ -54,14 +31,16 @@ public class hexMove : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
-		//if (isAvail == false) {
+
 		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
 		{
 			foreach (Transform child in transform) {
 				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+				//red_hex redhex = child.GetComponent<red_hex> ();
 				if (movObj.isClick)
 				{
 					movObj.isClick = false;
+					//redhex.isClick = false;
 				}
 				else
 				{
@@ -70,25 +49,20 @@ public class hexMove : MonoBehaviour {
 						float x1 = child.transform.position.x;
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;
-						//if (movObj.col1 == false) {
-							//child.transform.position = new Vector3 (x1, y1, z1 - 20);
+
 						movObj.isClick = true;
 						movObj.isInit = false;
 						movObj.isInitCollide = false;
 						movObj.isCollide = false;
-							//} else if (movObj.col1 == false)
-						//{
-						//	child.transform.position = new Vector3 (x1, y1+10, z1 + 20);
-						//	movObj.isAvail = false;
-						//}
-						//child is your child transform
+
+
+
 					}
 				}
 			}
 		}
 
-			//isAvail = true;
-		//}
+
 	}
 
 	//use this for hiding the green hex objects.
@@ -96,7 +70,9 @@ public class hexMove : MonoBehaviour {
 	{
 		foreach (Transform child in transform) {
 			moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+			//red_hex redhex = child.GetComponent<red_hex> ();
 			movObj.isClick = false;
+			//redhex.isClick = false;
 		}
 	}
 
