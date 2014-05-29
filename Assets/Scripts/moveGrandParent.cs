@@ -15,10 +15,11 @@ public class moveGrandParent : MonoBehaviour {
 
 	public bool isGreen = true;
 	public int angle_type;
-
+	private Color originalColor;
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
+		originalColor = transform.GetComponent<SpriteRenderer> ().material.color;
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
@@ -49,6 +50,12 @@ public class moveGrandParent : MonoBehaviour {
 					this.transform.position = new Vector3(x1,y1,-5); //0
 			
 			isInit = true;
+		}
+		if (gameController.attackStep) {
+			transform.GetComponent<SpriteRenderer> ().material.color = new Color(1,0,0);
+		}
+		else{
+			transform.GetComponent<SpriteRenderer> ().material.color  = originalColor;
 		}
 
 
@@ -89,10 +96,16 @@ public class moveGrandParent : MonoBehaviour {
 			float y1 = gameObject.transform.position.y;
 			float z1 = gameObject.transform.position.z;
 			if (isClick == true) {
+				if(!gameController.attackStep){
 				gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
 				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
-				transform.parent.GetComponent<hexMove> ().hideMoves ();
-				transform.parent.transform.parent.GetComponent<unitStatScript> ().movesRemaining -= 1;
+				transform.parent.GetComponent<hexMove>().hideMoves();
+				transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
+				if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
+				{
+					gameController.attackStep = true;
+				}
+			}
 
 
 			}
