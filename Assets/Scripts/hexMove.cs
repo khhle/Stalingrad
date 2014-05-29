@@ -6,7 +6,16 @@ public class hexMove : MonoBehaviour {
 	private Color originalColor ;
 	public bool isAvail = false ;
 	private int counter = 60;
+	private GameController gameController;
+	private unitStatScript parentStats;
 
+	void Start () {
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
+		parentStats = transform.parent.GetComponent<unitStatScript> ();
+ 	}
 	void Update()
 	{
 
@@ -45,7 +54,7 @@ public class hexMove : MonoBehaviour {
 				else
 				{
 					//checks to see if it has any moves remaining
-					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0){
+					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 || (gameController.attackStep && !parentStats.hasAttacked)){
 						float x1 = child.transform.position.x;
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;

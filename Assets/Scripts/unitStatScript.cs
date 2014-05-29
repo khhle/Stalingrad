@@ -26,6 +26,7 @@ public class unitStatScript : MonoBehaviour {
 
 	//checks if it's the player's turn to move
 	public bool activeTurn = false;
+	public bool hasAttacked = false;
 
 	public GameController gameController;
 	// Use this for initialization
