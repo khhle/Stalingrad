@@ -13,9 +13,12 @@ public class moveGrandParent : MonoBehaviour {
 
 	public bool isClick = false;
 
-	public GameController gameController;
+	private GameController gameController;
+	private Color originalColor;
+
 	// Use this for initialization
 	void Start () {
+		originalColor = transform.GetComponent<SpriteRenderer> ().material.color;
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
@@ -45,6 +48,12 @@ public class moveGrandParent : MonoBehaviour {
 				//this.transform.position = new Vector3(x1,y1,z1+20);//0
 
 			isInit = true;
+		}
+		if (gameController.attackStep) {
+			transform.GetComponent<SpriteRenderer> ().material.color = new Color(1,0,0);
+		}
+		else{
+			transform.GetComponent<SpriteRenderer> ().material.color  = originalColor;
 		}
 
 
@@ -101,13 +110,15 @@ public class moveGrandParent : MonoBehaviour {
 		if (isClick == true)
 		{//GameObject obj_parent = gameObject.transform.parent.transform.parent.transform.position;
 						//GameObject obj_grand_parent =  obj_parent.transform.parent;
-			gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
-			//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
-			transform.parent.GetComponent<hexMove>().hideMoves();
-			transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
-			if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0)
-			{
-				gameController.attackStep = true;
+			if(!gameController.attackStep){
+				gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
+				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
+				transform.parent.GetComponent<hexMove>().hideMoves();
+				transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
+				if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
+				{
+					gameController.attackStep = true;
+				}
 			}
 			//this.transform.position = new Vector3(x1,y1,z1+20);
 			//isAvail = false;

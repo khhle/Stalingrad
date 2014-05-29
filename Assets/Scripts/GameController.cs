@@ -84,6 +84,13 @@ public class GameController : MonoBehaviour {
 		attackStep = false;
 	}
 
+	public void hideAllMoves()
+	{
+		for (int i = 0; i < unitCounter.Length; i++){
+			unitCounter[i].GetComponentInChildren<hexMove>().hideMoves();
+		}
+	}
+
 	public void GameOver(int winner)
 	{
 		isGameOver = true;
