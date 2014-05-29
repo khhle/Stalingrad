@@ -17,11 +17,6 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//find out how many units there are per player initially to easily keep track of loss
-		if(isGameOver && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.R)))
-		{
-			//restart the game, change this to the unit selection/title scene later
-			Application.LoadLevel(0);
-		}
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		for (int i = 0; i < unitCounter.Length; i++) {
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == 1)
@@ -40,6 +35,11 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(isGameOver && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.R)))
+		{
+			//restart the game, change this to the unit selection/title scene later
+			Application.LoadLevel(0);
+		}
 		//Continually check units remaining for accurate counter
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		int temp1Units = 0, temp2Units = 0;

@@ -54,7 +54,7 @@ public class hexMove : MonoBehaviour {
 				else
 				{
 					//checks to see if it has any moves remaining
-					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 || (gameController.attackStep && !parentStats.hasAttacked)){
+					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep && movObj.isGreen){
 						float x1 = child.transform.position.x;
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;
@@ -64,8 +64,16 @@ public class hexMove : MonoBehaviour {
 						movObj.isInitCollide = false;
 						movObj.isCollide = false;
 
-
-
+					}
+					else if(gameController.attackStep && !movObj.isGreen){
+						float x1 = child.transform.position.x;
+						float y1 = child.transform.position.y;
+						float z1 = child.transform.position.z;
+						
+						movObj.isClick = true;
+						movObj.isInit = false;
+						movObj.isInitCollide = false;
+						movObj.isCollide = false;
 					}
 				}
 			}
