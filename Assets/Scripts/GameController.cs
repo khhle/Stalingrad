@@ -10,8 +10,10 @@ public class GameController : MonoBehaviour {
 	public int player2Units = 0;
 	public bool isGameOver = false;
 
-	//keeps track of whose turn it is
+	//keeps track of whose turn it is and if it's the attack step
 	public int playerTurn;
+	public bool attackStep = false;
+
 	// Use this for initialization
 	void Start () {
 		//find out how many units there are per player initially to easily keep track of loss
@@ -61,7 +63,12 @@ public class GameController : MonoBehaviour {
 		{
 			GameOver (1);
 		}
-		playerTurnText.text = "Player " + playerTurn + "'s turn";
+		if(attackStep){
+			playerTurnText.text = "Player " + playerTurn + "'s turn: Attack Phase";
+		}
+		else{
+			playerTurnText.text = "Player " + playerTurn + "'s turn: Movement Phase";
+		}
 	}
 
 	public void turnChange (int player)
@@ -74,6 +81,7 @@ public class GameController : MonoBehaviour {
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 			}
 		}
+		attackStep = false;
 	}
 
 	public void GameOver(int winner)

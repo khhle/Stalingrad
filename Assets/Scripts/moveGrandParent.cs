@@ -105,6 +105,10 @@ public class moveGrandParent : MonoBehaviour {
 			//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
 			transform.parent.GetComponent<hexMove>().hideMoves();
 			transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
+			if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0)
+			{
+				gameController.attackStep = true;
+			}
 			//this.transform.position = new Vector3(x1,y1,z1+20);
 			//isAvail = false;
 
