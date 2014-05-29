@@ -65,7 +65,7 @@ public class hexMove : MonoBehaviour {
 						movObj.isCollide = false;
 
 					}
-					else if(gameController.attackStep && !movObj.isGreen){
+					else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
 						float x1 = child.transform.position.x;
 						float y1 = child.transform.position.y;
 						float z1 = child.transform.position.z;

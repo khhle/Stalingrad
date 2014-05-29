@@ -39,6 +39,5 @@ public class turnChangeButton : MonoBehaviour {
 			came.turnNumber = 2;
 		else if(turnNumber == 2)
 		 	came.turnNumber = 1;
-		gameController.hideAllMoves ();
 	}
 }

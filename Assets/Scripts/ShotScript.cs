@@ -16,6 +16,7 @@ public class ShotScript : MonoBehaviour
 	/// Projectile damage player or enemies?
 	/// </summary>
 	//public bool isEnemyShot = false;
+	public int attackPower;
 	public int teamNumber;
 	
 	private GameController gameController;
@@ -41,14 +42,16 @@ public class ShotScript : MonoBehaviour
 		if (tA != null && teamNumber == 2) {
 
 			SpecialEffectsHelper.Instance.Explosion (transform.position);
-			Destroy (tA.gameObject.transform.parent.gameObject);
+			//deals damage equal to this attack power, subtract defense later.
+			tA.gameObject.transform.parent.GetComponent<unitStatScript>().health -= attackPower;
 		}
 
 		teamB tB = otherCollider.gameObject.GetComponent<teamB> ();
 		if (tB != null && teamNumber == 1) {
 
 			SpecialEffectsHelper.Instance.Explosion (transform.position);
-			Destroy (tB.gameObject.transform.parent.gameObject);
+			//deals damage equal to this attack power, subtract defense later.
+			tB.gameObject.transform.parent.GetComponent<unitStatScript>().health -= attackPower;
 		}
 	}
 

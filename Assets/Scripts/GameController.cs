@@ -79,8 +79,10 @@ public class GameController : MonoBehaviour {
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == player)
 			{
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
+				unitCounter[i].GetComponent<unitStatScript>().hasAttacked = false;
 			}
 		}
+		hideAllMoves ();
 		attackStep = false;
 	}
 

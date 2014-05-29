@@ -34,10 +34,12 @@ public class WeaponScript : MonoBehaviour
 	private float y1;
 	private float z1;
 	private int angle;
+	private unitStatScript parentsStats;
 	
 	void Start()
 	{
 		shootCooldown = 0f;
+		parentsStats = transform.parent.GetComponent<unitStatScript> ();
 	}
 	
 	void Update()
@@ -181,6 +183,8 @@ public class WeaponScript : MonoBehaviour
 		//{
 			shootCooldown = shootingRate;
 			
+		if(!parentsStats.hasAttacked){
+			parentsStats.hasAttacked = true;
 			// Create a new shot
 			var shotTransform = Instantiate(shotPrefab) as Transform;
 			
@@ -192,6 +196,8 @@ public class WeaponScript : MonoBehaviour
 			if (shot != null)
 			{
 				shot.teamNumber = teamNumber;
+			//assign a damage value; randomize this a bit later
+				shot.attackPower = parentsStats.attack;
 			}
 			
 			// Make the weapon shot always towards it
@@ -200,6 +206,7 @@ public class WeaponScript : MonoBehaviour
 			{
 				move.direction = this.transform.up; // towards in 2D space is the right of the sprite
 			}
+		}
 		//}
 	}
 	

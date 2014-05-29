@@ -119,6 +119,7 @@ public class moveGrandParent : MonoBehaviour {
 			tankObj.isRepeat = true;
 			//tankObj.isInit = false;
 			tankObj.attack();
+			transform.parent.GetComponent<hexMove>().hideMoves();
 
 				// false because the player is not an enemy
 				//weapon.Attack (false);

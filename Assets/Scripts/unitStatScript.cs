@@ -57,5 +57,10 @@ public class unitStatScript : MonoBehaviour {
 		}
 		else
 			activeTurn = false;
+
+		if (health <= 0) {
+			Destroy(this.gameObject);
+		}
+
 	}
 }
