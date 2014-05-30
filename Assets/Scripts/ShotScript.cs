@@ -18,6 +18,7 @@ public class ShotScript : MonoBehaviour
 	//public bool isEnemyShot = false;
 	public int attackPower;
 	public int teamNumber;
+	public bool isCounter = false;
 	
 	private GameController gameController;
 	void Start()
@@ -37,21 +38,22 @@ public class ShotScript : MonoBehaviour
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
 				Destroy (gameObject);
 			}
-
-		teamA tA = otherCollider.gameObject.GetComponent<teamA> ();
-		if (tA != null && teamNumber == 2) {
-
-			SpecialEffectsHelper.Instance.Explosion (transform.position);
-			//deals damage equal to this attack power, subtract defense later.
-			tA.gameObject.transform.parent.GetComponent<unitStatScript>().health -= attackPower;
-		}
-
-		teamB tB = otherCollider.gameObject.GetComponent<teamB> ();
-		if (tB != null && teamNumber == 1) {
+		//this is where the damage calculations take place. otherStats is the enemy unit's stats
+		unitStatScript otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
+		if (otherStats != null && otherStats.playerOwner == 1 && teamNumber == 2) {
 
 			SpecialEffectsHelper.Instance.Explosion (transform.position);
-			//deals damage equal to this attack power, subtract defense later.
-			tB.gameObject.transform.parent.GetComponent<unitStatScript>().health -= attackPower;
+			//deals damage equal to this attack power minus arandom value of defense.
+			int tempDefense = Random.Range (0, otherStats.defense);
+			if(attackPower > tempDefense)
+				otherStats.health -= (attackPower - tempDefense);
+		}else if (otherStats != null && otherStats.playerOwner == 2  && teamNumber == 1) {
+
+			SpecialEffectsHelper.Instance.Explosion (transform.position);
+			//deals damage equal to this attack power minus arandom value of defense.
+			int tempDefense = Random.Range (0, otherStats.defense);
+			if(attackPower > tempDefense)
+				otherStats.health -= (attackPower - tempDefense);
 		}
 	}
 

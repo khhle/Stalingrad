@@ -5,7 +5,6 @@ public class hexMove : MonoBehaviour {
 	private Color mouseOverColor = Color.cyan;
 	private Color originalColor ;
 	public bool isAvail = false ;
-	private int counter = 60;
 	private GameController gameController;
 	private unitStatScript parentStats;
 
@@ -62,9 +61,6 @@ public class hexMove : MonoBehaviour {
 				{
 					//checks to see if it has any moves remaining
 					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep && movObj.isGreen){
-						float x1 = child.transform.position.x;
-						float y1 = child.transform.position.y;
-						float z1 = child.transform.position.z;
 
 						//if you click on unit in movement phase give the option for the skip
 						parentStats.isMoving = true;
@@ -78,10 +74,6 @@ public class hexMove : MonoBehaviour {
 					else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
 						//if the button hasn't been pressed to skip move, hide the button
 						parentStats.isMoving = false;
-
-						float x1 = child.transform.position.x;
-						float y1 = child.transform.position.y;
-						float z1 = child.transform.position.z;
 
 						//if you click on the unit in attack phase give the option for the skip
 						parentStats.isAttacking = true;

@@ -7,7 +7,6 @@ public class moveGrandParent : MonoBehaviour {
 	public bool isAvail = false;
 	public bool isInit = false;
 	public bool isInitCollide = false;
-	private int counter = 60;
 	public bool isCollide = false;
 	public bool isReset = false;
 
@@ -31,7 +30,7 @@ public class moveGrandParent : MonoBehaviour {
 		if (isReset == true) {
 			float x1 = this.transform.position.x;
 			float y1 = this.transform.position.y;
-			float z1 = this.transform.position.z;
+			//float z1 = this.transform.position.z;
 			this.transform.position = new Vector3(x1,y1,100);
 			isReset = false;
 			isCollide = false;
@@ -42,7 +41,7 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			float x1 = this.transform.position.x;
 			float y1 = this.transform.position.y;
-			float z1 = this.transform.position.z;
+			//float z1 = this.transform.position.z;
 			if(isCollide == false)
 				if(isGreen == true)
 					this.transform.position = new Vector3(x1,y1,0); //0
@@ -64,7 +63,7 @@ public class moveGrandParent : MonoBehaviour {
 		if (!isClick) {
 				float x1 = this.transform.position.x;
 				float y1 = this.transform.position.y;
-				float z1 = this.transform.position.z;
+				//float z1 = this.transform.position.z;
 				if(isCollide == false)
 					this.transform.position = new Vector3(x1,y1,20);
 		}
@@ -94,7 +93,7 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			float x1 = gameObject.transform.position.x;
 			float y1 = gameObject.transform.position.y;
-			float z1 = gameObject.transform.position.z;
+			//float z1 = gameObject.transform.position.z;
 			if (isClick == true) {
 				if(!gameController.attackStep){
 				gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);

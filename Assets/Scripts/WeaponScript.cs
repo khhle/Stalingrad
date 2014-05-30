@@ -197,7 +197,7 @@ public class WeaponScript : MonoBehaviour
 			{
 				shot.teamNumber = teamNumber;
 			//assign a damage value; randomize this a bit later
-				shot.attackPower = parentsStats.attack;
+				shot.attackPower = Random.Range(0, parentsStats.attack);
 			}
 			
 			// Make the weapon shot always towards it
