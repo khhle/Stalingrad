@@ -121,8 +121,8 @@ public class moveGrandParent : MonoBehaviour {
 				gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
 				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
 				transform.parent.GetComponent<hexMove>().hideMoves();
-				//Turns Skip Attack Button off after attacking
- +				transform.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
+				
+				
 				
 				transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
 				if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
@@ -143,6 +143,9 @@ public class moveGrandParent : MonoBehaviour {
 				grandParentStats.angle = angle;
 				grandParentStats.isRepeat = true;
 
+
+				//Turns Skip Attack Button off after attacking
+				transform.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
 				//tankObj.isInit = false;
 				grandParentStats.attackEnemy();
 				transform.parent.GetComponent<hexMove>().hideMoves();
