@@ -34,6 +34,7 @@ public class unitStatScript : MonoBehaviour {
 	//weapon stuff, previously in tank_script
 	private WeaponScript weapon;
 	public int angle_type;
+	public float angle;
 	private bool isAttack = false;
 	public bool isRepeat = false;
 	public bool isInit = false;
@@ -94,6 +95,7 @@ public class unitStatScript : MonoBehaviour {
 		if (weapon != null )
 		{
 			weapon.angle_type = angle_type;
+			weapon.angleF = angle;
 			weapon.changeAngle();
 			weapon.isRepeat = isRepeat;
 		}

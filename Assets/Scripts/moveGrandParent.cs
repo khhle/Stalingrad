@@ -14,9 +14,14 @@ public class moveGrandParent : MonoBehaviour {
 
 	public bool isGreen = true;
 	public int angle_type;
+	public float angle;
 	private Color originalColor;
 	private unitStatScript grandParentStats;
 	public GameController gameController;
+
+	private float x1;
+	private float y1;
+
 	// Use this for initialization
 	void Start () {
 		grandParentStats = transform.parent.parent.GetComponent<unitStatScript> ();
@@ -24,6 +29,21 @@ public class moveGrandParent : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
+		}
+
+		x1 = this.transform.position.x;
+		y1 = this.transform.position.y;
+
+		if (x1 >= grandParentStats.transform.position.x) {
+			angle = Mathf.Rad2Deg * Mathf.Atan ((y1 - grandParentStats.transform.position.y) / (x1 - grandParentStats.transform.position.x));
+			angle -= 90;
+		}
+		else 
+		{
+			angle = Mathf.Rad2Deg * Mathf.Atan ((y1 - grandParentStats.transform.position.y) / (x1 - grandParentStats.transform.position.x));
+			angle += 90;
+			//angle = angle * -1;
+
 		}
 	}
 	
@@ -115,14 +135,18 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			//WeaponScript weapon = GetComponent<WeaponScript> ();
 			//if (weapon != null) {
-			grandParentStats.angle_type = angle_type;
-			grandParentStats.isRepeat = true;
-			//tankObj.isInit = false;
-			grandParentStats.attackEnemy();
-			transform.parent.GetComponent<hexMove>().hideMoves();
+			if (isClick == true) {
+				grandParentStats.angle_type = angle_type;
+				grandParentStats.angle = angle;
+				grandParentStats.isRepeat = true;
 
-				// false because the player is not an enemy
-				//weapon.Attack (false);
+				//tankObj.isInit = false;
+				grandParentStats.attackEnemy();
+				transform.parent.GetComponent<hexMove>().hideMoves();
+
+					// false because the player is not an enemy
+					//weapon.Attack (false);
+			}
 
 
 		}
