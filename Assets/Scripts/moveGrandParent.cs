@@ -121,6 +121,9 @@ public class moveGrandParent : MonoBehaviour {
 			grandParentStats.attackEnemy();
 			transform.parent.GetComponent<hexMove>().hideMoves();
 
+			//Turns Skip Attack Button off after attacking
+			transform.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
+
 				// false because the player is not an enemy
 				//weapon.Attack (false);
 
