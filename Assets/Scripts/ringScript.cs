@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ringScript : MonoBehaviour {
 
+	public int rangeValue;
 	// Use this for initialization
 	void Start () {
 	
