@@ -24,7 +24,7 @@ public class moveGrandParent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		grandParentStats = transform.parent.parent.GetComponent<unitStatScript> ();
+		grandParentStats = transform.parent.parent.parent.GetComponent<unitStatScript> ();
 		originalColor = transform.GetComponent<SpriteRenderer> ().material.color;
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
@@ -118,14 +118,14 @@ public class moveGrandParent : MonoBehaviour {
 			//float z1 = gameObject.transform.position.z;
 			if (isClick == true) {
 				if(!gameController.attackStep){
-				gameObject.transform.parent.transform.parent.transform.position = new Vector3 (x1, y1, 0);
+				gameObject.transform.parent.transform.parent.parent.transform.position = new Vector3 (x1, y1, 0);
 				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
-				transform.parent.GetComponent<hexMove>().hideMoves();
+				transform.parent.parent.GetComponent<hexMove>().hideMoves();
 				
 				
 				
-				transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining -=1;
-				if(transform.parent.transform.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
+				transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining -=1;
+				if(transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
 				{
 					gameController.attackStep = true;
 				}
@@ -145,10 +145,10 @@ public class moveGrandParent : MonoBehaviour {
 
 
 				//Turns Skip Attack Button off after attacking
-				transform.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
+				transform.parent.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
 				//tankObj.isInit = false;
 				grandParentStats.attackEnemy();
-				transform.parent.GetComponent<hexMove>().hideMoves();
+				transform.parent.parent.GetComponent<hexMove>().hideMoves();
 
 					// false because the player is not an enemy
 					//weapon.Attack (false);

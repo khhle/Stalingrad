@@ -25,6 +25,7 @@ public class hexMove : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
+		Debug.Log ("Collide!");
 		originalColor = gameObject.renderer.material.GetColor ("_Color");
 		gameObject.renderer.material.color = mouseOverColor;
 
@@ -43,46 +44,48 @@ public class hexMove : MonoBehaviour {
 
 		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
 		{
-
-			foreach (Transform child in transform) {
-				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
-				//red_hex redhex = child.GetComponent<red_hex> ();
-				if (movObj.isClick)
-				{
-					//if you click on the unit while in movement phase, remove skip button
-					parentStats.isMoving = false;
-					//if you click on the unit while in attack phase, remove skip button
-					parentStats.isAttacking = false;
-
-					movObj.isClick = false;
-					//redhex.isClick = false;
-				}
-				else
-				{
-					//checks to see if it has any moves remaining
-					if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep && movObj.isGreen){
-
-						//if you click on unit in movement phase give the option for the skip
-						parentStats.isMoving = true;
-
-						movObj.isClick = true;
-						movObj.isInit = false;
-						movObj.isInitCollide = false;
-						movObj.isCollide = false;
-
-					}
-					else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
-						//if the button hasn't been pressed to skip move, hide the button
+			foreach (Transform children in transform) {
+				Transform thisChild = children;
+				foreach (Transform child in thisChild) {
+					moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+					//red_hex redhex = child.GetComponent<red_hex> ();
+					if (movObj.isClick)
+					{
+						//if you click on the unit while in movement phase, remove skip button
 						parentStats.isMoving = false;
+						//if you click on the unit while in attack phase, remove skip button
+						parentStats.isAttacking = false;
 
-						//if you click on the unit in attack phase give the option for the skip
-						parentStats.isAttacking = true;
-						
-						movObj.isClick = true;
-						movObj.isInit = false;
-						movObj.isInitCollide = false;
-						movObj.isCollide = false;
+						movObj.isClick = false;
+						//redhex.isClick = false;
 					}
+					else
+					{
+						//checks to see if it has any moves remaining
+						if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep && movObj.isGreen){
+
+							//if you click on unit in movement phase give the option for the skip
+							parentStats.isMoving = true;
+
+							movObj.isClick = true;
+							movObj.isInit = false;
+							movObj.isInitCollide = false;
+							movObj.isCollide = false;
+
+						}
+						else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
+							//if the button hasn't been pressed to skip move, hide the button
+							parentStats.isMoving = false;
+
+							//if you click on the unit in attack phase give the option for the skip
+							parentStats.isAttacking = true;
+							
+							movObj.isClick = true;
+							movObj.isInit = false;
+							movObj.isInitCollide = false;
+							movObj.isCollide = false;
+						}
+				}
 				}
 			}
 		}
@@ -93,11 +96,14 @@ public class hexMove : MonoBehaviour {
 	//use this for hiding the green hex objects.
 	public void hideMoves()
 	{
-		foreach (Transform child in transform) {
-			moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
-			//red_hex redhex = child.GetComponent<red_hex> ();
-			movObj.isClick = false;
-			//redhex.isClick = false;
+		foreach (Transform children in transform) {
+			Transform thisChild = children;
+			foreach (Transform child in thisChild) {
+				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
+				//red_hex redhex = child.GetComponent<red_hex> ();
+				movObj.isClick = false;
+				//redhex.isClick = false;
+			}
 		}
 	}
 
