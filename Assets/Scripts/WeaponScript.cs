@@ -216,6 +216,7 @@ public class WeaponScript : MonoBehaviour
 			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 			if (shot != null)
 			{
+				shot.shotRange = 5; //5 should be ring value range
 				shot.teamNumber = teamNumber;
 				shot.parentsStats = parentsStats;
 			//assign a damage value; randomize this a bit later

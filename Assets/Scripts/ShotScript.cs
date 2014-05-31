@@ -19,6 +19,7 @@ public class ShotScript : MonoBehaviour
 	public int attackPower;
 	public int teamNumber;
 	public bool isCounter = false;
+	public int shotRange;
 
 	public unitStatScript parentsStats;
 	private GameController gameController;
@@ -61,11 +62,13 @@ public class ShotScript : MonoBehaviour
 
 	void counterAttack( unitStatScript otherStats)
 	{
-		int tempDefense = Random.Range (0, parentsStats.defense);
-		int tempAttack = Random.Range (0, parentsStats.attack);
-		int damage = tempAttack - tempDefense;
-		if(damage > 0)
-			parentsStats.health -= damage;
+		if (otherStats.range >= shotRange){
+			int tempDefense = Random.Range (0, parentsStats.defense);
+			int tempAttack = Random.Range (0, otherStats.attack);
+			int damage = tempAttack - tempDefense;
+			if(damage > 0)
+				parentsStats.health -= damage;
+		}
 	}
 
 
