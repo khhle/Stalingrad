@@ -15,9 +15,11 @@ public class moveGrandParent : MonoBehaviour {
 	public bool isGreen = true;
 	public int angle_type;
 	private Color originalColor;
+	private unitStatScript grandParentStats;
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
+		grandParentStats = transform.parent.parent.GetComponent<unitStatScript> ();
 		originalColor = transform.GetComponent<SpriteRenderer> ().material.color;
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
@@ -113,11 +115,10 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			//WeaponScript weapon = GetComponent<WeaponScript> ();
 			//if (weapon != null) {
-			tank_script tankObj =	gameObject.transform.parent.transform.parent.GetComponent<tank_script>();
-			tankObj.angle_type = angle_type;
-			tankObj.isRepeat = true;
+			grandParentStats.angle_type = angle_type;
+			grandParentStats.isRepeat = true;
 			//tankObj.isInit = false;
-			tankObj.attack();
+			grandParentStats.attackEnemy();
 			transform.parent.GetComponent<hexMove>().hideMoves();
 
 				// false because the player is not an enemy

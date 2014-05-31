@@ -11,7 +11,7 @@ public class tank_script : MonoBehaviour {
 	public bool isInit = false;
 	void Awake()
 	{
-		weapon = this.GetComponentInChildren<WeaponScript> ();
+		weapon = transform.GetComponent<WeaponScript> ();
 		//weapons = GetComponentsInChildren<WeaponScript>();
 	}
 
@@ -33,7 +33,7 @@ public class tank_script : MonoBehaviour {
 			if (weapon != null )
 			{
 				weapon.angle_type = angle_type;
-			weapon.changeAngle();
+				weapon.changeAngle();
 				weapon.isRepeat = isRepeat;
 			//weapon.isInit = isInit;
 				//isAttack = true;

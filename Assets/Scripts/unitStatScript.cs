@@ -22,7 +22,7 @@ public class unitStatScript : MonoBehaviour {
 
 	public GUIText statText;
 
-	//What kind of unit it is, ie tank, plane, general.
+	//What kind of unit it is, ie tank, plane, infantry.
 	public string unitType;
 
 	//keeps track of how far the unit can move
@@ -31,9 +31,17 @@ public class unitStatScript : MonoBehaviour {
 	public bool activeTurn = false;
 	public bool hasAttacked = false;
 
+	//weapon stuff, previously in tank_script
+	private WeaponScript weapon;
+	public int angle_type;
+	private bool isAttack = false;
+	public bool isRepeat = false;
+	public bool isInit = false;
+
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
+		weapon = transform.GetComponent<WeaponScript> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
@@ -74,12 +82,22 @@ public class unitStatScript : MonoBehaviour {
 			isMoving = false;
 			gameController.hideAllMoves();
 		}
-		else if (isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
+		else if (!hasAttacked && isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
 			hasAttacked = true;
 			isAttacking = false;
 			gameController.hideAllMoves();
 		}
 	}
 
+	public void attackEnemy(){
+		
+		if (weapon != null )
+		{
+			weapon.angle_type = angle_type;
+			weapon.changeAngle();
+			weapon.isRepeat = isRepeat;
+		}
+		
+	}
 
 }

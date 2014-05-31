@@ -13,7 +13,7 @@ public class WeaponScript : MonoBehaviour
 	public bool isInit = false;
 	public bool isRepeat = false;
 	private float oldAngle = 0;
-	public int teamNumber;
+	private int teamNumber;
 
 	/// <summary>
 	/// Projectile prefab for shooting
@@ -39,7 +39,8 @@ public class WeaponScript : MonoBehaviour
 	void Start()
 	{
 		shootCooldown = 0f;
-		parentsStats = transform.parent.GetComponent<unitStatScript> ();
+		parentsStats = transform.GetComponent<unitStatScript> ();
+		teamNumber = parentsStats.playerOwner;
 	}
 	
 	void Update()
@@ -196,6 +197,7 @@ public class WeaponScript : MonoBehaviour
 			if (shot != null)
 			{
 				shot.teamNumber = teamNumber;
+				shot.parentsStats = parentsStats;
 			//assign a damage value; randomize this a bit later
 				shot.attackPower = Random.Range(0, parentsStats.attack);
 			}
