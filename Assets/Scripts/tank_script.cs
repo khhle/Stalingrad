@@ -17,10 +17,7 @@ public class tank_script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//foreach (WeaponScript weapon in weapons)
-		//{
-		//	weapon.enabled = false;
-		//}
+
 	}
 	
 	// Update is called once per frame
@@ -32,7 +29,6 @@ public class tank_script : MonoBehaviour {
 
 			if (weapon != null )
 			{
-				weapon.angle_type = angle_type;
 				weapon.changeAngle();
 				weapon.isRepeat = isRepeat;
 			//weapon.isInit = isInit;

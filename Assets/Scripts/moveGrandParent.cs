@@ -42,8 +42,6 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			angle = Mathf.Rad2Deg * Mathf.Atan ((y1 - grandParentStats.transform.position.y) / (x1 - grandParentStats.transform.position.x));
 			angle += 90;
-			//angle = angle * -1;
-
 		}
 	}
 	
@@ -56,7 +54,7 @@ public class moveGrandParent : MonoBehaviour {
 			this.transform.position = new Vector3(x1,y1,100);
 			isReset = false;
 			isCollide = false;
-				}
+		}
 
 
 		if (isClick == true && isInit == false)
@@ -79,18 +77,13 @@ public class moveGrandParent : MonoBehaviour {
 			transform.GetComponent<SpriteRenderer> ().material.color  = originalColor;
 		}
 
-
-
-
 		if (!isClick) {
-				float x1 = this.transform.position.x;
-				float y1 = this.transform.position.y;
-				//float z1 = this.transform.position.z;
-				if(isCollide == false)
-					this.transform.position = new Vector3(x1,y1,20);
+			float x1 = this.transform.position.x;
+			float y1 = this.transform.position.y;
+			//float z1 = this.transform.position.z;
+			if(isCollide == false)
+				this.transform.position = new Vector3(x1,y1,20);
 		}
-			
-			
 
 	}
 
@@ -99,10 +92,7 @@ public class moveGrandParent : MonoBehaviour {
 		//	originalColor = gameObject.renderer.material.GetColor ("_Color");
 		//	gameObject.renderer.material.color = mouseOverColor;
 		
-		
 	}
-	
-	
 	
 	void OnMouseExit()
 	{
@@ -116,22 +106,16 @@ public class moveGrandParent : MonoBehaviour {
 			float x1 = gameObject.transform.position.x;
 			float y1 = gameObject.transform.position.y;
 			//float z1 = gameObject.transform.position.z;
-			if (isClick == true) {
-				if(!gameController.attackStep){
+			if (isClick == true && !gameController.attackStep) {
 				gameObject.transform.parent.transform.parent.parent.transform.position = new Vector3 (x1, y1, 0);
 				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
-				
-				
-				
+
 				transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining -=1;
 				if(transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
 				{
 					gameController.attackStep = true;
 				}
-			}
-
-
 			}
 		}
 		else
@@ -139,24 +123,19 @@ public class moveGrandParent : MonoBehaviour {
 			//WeaponScript weapon = GetComponent<WeaponScript> ();
 			//if (weapon != null) {
 			if (isClick == true) {
-				grandParentStats.angle_type = angle_type;
 				grandParentStats.angle = angle;
 				grandParentStats.isRepeat = true;
 
 
 				//Turns Skip Attack Button off after attacking
 				transform.parent.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
-				//tankObj.isInit = false;
-				grandParentStats.attackEnemy();
+				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue);
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
 
 					// false because the player is not an enemy
 					//weapon.Attack (false);
 			}
-
-
 		}
-
 	}
 
 
@@ -190,18 +169,15 @@ public class moveGrandParent : MonoBehaviour {
 		//Debug.Log ("Collide Stay!");
 		stone_script stone = coll.gameObject.GetComponent<stone_script> ();
 		if (stone != null) {
-						if (isClick == true) {
-								isCollide = true;
-								//}
-						}
-				}
+			if (isClick == true) {
+				isCollide = true;
+			}
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D coll)
 	{
-
-	
+		
 	}
-
 
 }

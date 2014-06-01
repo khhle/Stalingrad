@@ -33,11 +33,13 @@ public class unitStatScript : MonoBehaviour {
 
 	//weapon stuff, previously in tank_script
 	private WeaponScript weapon;
-	public int angle_type;
 	public float angle;
 	private bool isAttack = false;
 	public bool isRepeat = false;
 	public bool isInit = false;
+
+	//keeping track of the range that was just clicked for attacking
+	public int rangeClicked;
 
 	public GameController gameController;
 	// Use this for initialization
@@ -90,11 +92,11 @@ public class unitStatScript : MonoBehaviour {
 		}
 	}
 
-	public void attackEnemy(){
+	public void attackEnemy(int tempRange){
 		
 		if (weapon != null )
 		{
-			weapon.angle_type = angle_type;
+			rangeClicked = tempRange;
 			weapon.angleF = angle;
 			weapon.changeAngle();
 			weapon.isRepeat = isRepeat;
