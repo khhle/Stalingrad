@@ -18,6 +18,12 @@ public class UnitSelection : MonoBehaviour {
 	//Credits for how many units you can buy
 	public int player1_Credits, player2_Credits;
 
+	//List of Audio sources
+	public AudioClip insufficientFunds;
+	public AudioClip sufficientFunds;
+	public AudioClip hoverOver;
+	public bool boopPlayed = false;
+
 	//An array used to check the purchased units
 	private bool[] unitsPurchased = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 	private bool[] unitIconMade = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
@@ -620,9 +626,14 @@ public class UnitSelection : MonoBehaviour {
 		}
 		GUI.Button(Wirbelwind_offscreen2, new GUIContent("Wirbelwind x" + amountPurchased[15], "Wirbelwind"));
 		if (GUI.tooltip == "Wirbelwind") {
+			if(!boopPlayed){
+				audio.PlayOneShot (hoverOver);
+				boopPlayed = true;
+			}
 			unit_Wirbelwind.transform.position = new Vector3((float)0.5, (float).345, -3);
 		}else if(GUI.tooltip == "" ){
 			unit_Wirbelwind.transform.position = new Vector3(10, (float).345, -3);
+			//boopPlayed = false;
 		}
 
 	}

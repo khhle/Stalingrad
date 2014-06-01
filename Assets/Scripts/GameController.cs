@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GameController : MonoBehaviour {
-	
+
 	public GUIText playerTurnText;
 	public GUIText GameOverText;
 	GameObject[] unitCounter;
