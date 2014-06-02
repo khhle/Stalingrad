@@ -7,6 +7,7 @@ public class Data_Carry : MonoBehaviour {
 	public int russianBomber; //Russian plane bomber
 	public int russianCannon; //Russian anti air turret
 	public int russianFighter; //Russian fighter plane
+	public int russianSniper; //Russian long range infantry
 	public int russianSquad; //Russian infantry squad
 	public int t28; // Russian light armor anti infantry tank
 	public int t34; //Russian long range tank destroying tank
@@ -16,6 +17,7 @@ public class Data_Carry : MonoBehaviour {
 	public int germanAT; //Russian anti tank infantry
 	public int germanBomber; //German Bomber plane
 	public int germanFighter; //German fighter plane
+	public int germanSniper; //German long range infantry
 	public int germanSquad; //German infantry squad
 	public int panther; //German long range tank destroying tank
 	public int panzer4; //German light armor anti infantry tank
