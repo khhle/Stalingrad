@@ -50,6 +50,9 @@ public class unitStatScript : MonoBehaviour {
 	//keeping track of the range that was just clicked for attacking
 	public int rangeClicked;
 
+	//keeps track of if this unit is the one the player pciked this turn
+	public bool picked;
+
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
@@ -115,6 +118,8 @@ public class unitStatScript : MonoBehaviour {
 			gameController.attackStep = true;
 			isMoving = false;
 			gameController.hideAllMoves();
+			picked = true;
+			gameController.pickedObject(this);
 		}
 		else if (!hasAttacked && isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
 			hasAttacked = true;

@@ -64,7 +64,7 @@ public class hexMove : MonoBehaviour {
 				foreach (Transform child in thisChild) {
 					moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
 					//red_hex redhex = child.GetComponent<red_hex> ();
-					if (movObj.isClick)
+					if (movObj.isClick && movObj.grandParentStats.picked)
 					{
 						//if you click on the unit while in movement phase, remove skip button
 						parentStats.isMoving = false;
@@ -74,18 +74,20 @@ public class hexMove : MonoBehaviour {
 						movObj.isClick = false;
 						//redhex.isClick = false;
 					}
-					else
+					else if(movObj.grandParentStats.picked)
 					{
 						//checks to see if it has any moves remaining
-						if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep && movObj.isGreen){
+						if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep){ //&& movObj.isGreen){
 
 							//if you click on unit in movement phase give the option for the skip
 							parentStats.isMoving = true;
 
-							movObj.isClick = true;
-							movObj.isInit = false;
-							movObj.isInitCollide = false;
-							movObj.isCollide = false;
+							if(movObj.isGreen || (movObj.transform.parent.GetComponent<ringScript>().rangeValue == parentStats.range && parentStats.range != 1)){
+								movObj.isClick = true;
+								movObj.isInit = false;
+								movObj.isInitCollide = false;
+								movObj.isCollide = false;
+							}
 
 						}
 						else if(gameController.attackStep && !movObj.isGreen && !parentStats.hasAttacked){
@@ -100,7 +102,7 @@ public class hexMove : MonoBehaviour {
 							movObj.isInitCollide = false;
 							movObj.isCollide = false;
 						}
-				}
+					}
 				}
 			}
 		}
