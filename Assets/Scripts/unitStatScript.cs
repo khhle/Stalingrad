@@ -4,6 +4,7 @@ using System.Collections;
 public class unitStatScript : MonoBehaviour {
 
 	public int id;
+	public bool isClicked = false;
 
 	//List of Russian Units
 	GameObject unit_t28, unit_t34, unit_t60, unit_RussianSniper, unit_RussianSquad, unit_RussianAT, unit_RussianBomber, unit_RussianCannon, unit_RussianFighter;
@@ -141,16 +142,5 @@ public class unitStatScript : MonoBehaviour {
 		
 	}
 
-	//mouse hover overs unit
-	void OnMouseEnter() {
-		if (this.id == 0)
-			unit_RussianAT.transform.position = new Vector3(1f, .345f, -3);
-	}
-	
-	//mouse exits hover
-	void OnMouseExit() {
-		if (this.id == 0)
-			unit_RussianAT.transform.position = new Vector3(10, .345f, -3);
-	}
 
 }

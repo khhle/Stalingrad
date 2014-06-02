@@ -49,14 +49,16 @@ public class hexMove : MonoBehaviour {
  	}
 	void Update()
 	{
-		if(transform.parent.GetComponent<unitStatScript>().movesRemaining <= 0)
+		if (parentStats.isMoving == false)
+			parentStats.isClicked = false;
+		if(transform.parent.GetComponent<unitStatScript>().movesRemaining <= 0){
 			parentStats.isMoving = false;
+		}
 	}
 
 	
 	void OnMouseDown()
 	{
-
 		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
 		{
 			foreach (Transform children in transform) {
@@ -78,6 +80,9 @@ public class hexMove : MonoBehaviour {
 					{
 						//checks to see if it has any moves remaining
 						if(transform.parent.GetComponent<unitStatScript>().movesRemaining > 0 && !gameController.attackStep){ //&& movObj.isGreen){
+
+							parentStats.isClicked = true;
+							OnMouseExit ();
 
 							//if you click on unit in movement phase give the option for the skip
 							parentStats.isMoving = true;
@@ -126,8 +131,8 @@ public class hexMove : MonoBehaviour {
 
 	//mouse hover overs unit
 	void OnMouseEnter() {
-		if (parentStats.id == 0)
-			unit_RussianAT.transform.position = new Vector3(1f, .345f, -3);
+		if (parentStats.id == 0 && !parentStats.isClicked)
+			unit_RussianAT.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
 	}
 	
 	//mouse exits hover
