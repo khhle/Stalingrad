@@ -3,6 +3,7 @@
 /// <summary>
 /// Simply moves the current game object
 /// </summary>
+/// FOR SHOT MOVEMENT
 public class moveScript2 : MonoBehaviour
 {
 	// 1 - Designer variables
