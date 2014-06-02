@@ -12,6 +12,7 @@ public class WeaponScript : MonoBehaviour
 	public bool isRepeat = false;
 	private float oldAngle = 0;
 	private int teamNumber;
+	public float timeDestroy;
 
 	/// Projectile prefab for shooting
 	public Transform shotPrefab;
@@ -83,6 +84,7 @@ public class WeaponScript : MonoBehaviour
 			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 			if (shot != null)
 			{
+				shot.timeDestroy = timeDestroy;
 				shot.shotRange = parentsStats.rangeClicked; //give it the range of the ring that was clicked on
 				shot.teamNumber = teamNumber;
 				shot.parentsStats = parentsStats;
