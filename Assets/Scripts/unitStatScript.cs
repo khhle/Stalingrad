@@ -3,6 +3,15 @@ using System.Collections;
 
 public class unitStatScript : MonoBehaviour {
 
+	public int id;
+
+	//List of Russian Units
+	GameObject unit_t28, unit_t34, unit_t60, unit_RussianSniper, unit_RussianSquad, unit_RussianAT, unit_RussianBomber, unit_RussianCannon, unit_RussianFighter;
+	
+	//List of German Units
+	GameObject unit_Flak30, unit_GermanAT, unit_GermanBomber, unit_GermanFighter, unit_panther, unit_Wirbelwind, unit_GermanSniper, unit_GermanSquad, unit_Panzer4;
+
+
 	public bool isMoving = false;
 	public bool isAttacking = false;
 
@@ -44,6 +53,28 @@ public class unitStatScript : MonoBehaviour {
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
+		//initialize russian units
+		unit_RussianAT = GameObject.Find ("unit_RussianAT");
+		unit_RussianBomber = GameObject.Find ("unit_RussianBomber");
+		unit_RussianCannon = GameObject.Find ("unit_RussianCannon");
+		unit_RussianFighter = GameObject.Find ("unit_RussianFighter");
+		unit_RussianSniper = GameObject.Find ("unit_RussianSniper");
+		unit_RussianSquad = GameObject.Find ("unit_RussianSquad");
+		unit_t28 = GameObject.Find("unit_t-28");
+		unit_t34 = GameObject.Find("unit_t-34");
+		unit_t60 = GameObject.Find("unit_t-60");
+		
+		//initialize german units
+		unit_Flak30 = GameObject.Find ("unit_Flak30");
+		unit_GermanAT = GameObject.Find ("unit_GermanAT");
+		unit_GermanBomber = GameObject.Find ("unit_GermanBomber");
+		unit_GermanFighter = GameObject.Find ("unit_GermanFighter");
+		unit_GermanSniper = GameObject.Find ("unit_GermanSniper");
+		unit_GermanSquad = GameObject.Find ("unit_GermanSquad");
+		unit_panther = GameObject.Find ("unit_panther");
+		unit_Panzer4 = GameObject.Find ("unit_Panzer4");
+		unit_Wirbelwind = GameObject.Find ("unit_Wirbelwind");
+
 		weapon = transform.GetComponent<WeaponScript> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
@@ -103,6 +134,18 @@ public class unitStatScript : MonoBehaviour {
 			weapon.isRepeat = isRepeat;
 		}
 		
+	}
+
+	//mouse hover overs unit
+	void OnMouseEnter() {
+		if (this.id == 0)
+			unit_RussianAT.transform.position = new Vector3(1f, .345f, -3);
+	}
+	
+	//mouse exits hover
+	void OnMouseExit() {
+		if (this.id == 0)
+			unit_RussianAT.transform.position = new Vector3(10, .345f, -3);
 	}
 
 }
