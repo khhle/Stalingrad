@@ -22,12 +22,13 @@ public class UnitSelection : MonoBehaviour {
 	public AudioClip insufficientFunds;
 	public AudioClip sufficientFunds;
 	public AudioClip hoverOver;
-	public bool boopPlayed = false;
+
 
 	//An array used to check the purchased units
 	private bool[] unitsPurchased = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 	private bool[] unitIconMade = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 	private static int[] amountPurchased = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	private string[] lastTip = {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
 	private bool isPlayer1 = true;
 	private bool isPlayer2 = false;
 	private int yCoordSelectionP1 = 100;
@@ -467,10 +468,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianAT_offscreen2, new GUIContent("Russian AT x" + amountPurchased[0], "RussianAT"));
-		if (GUI.tooltip == "RussianAT") {
-			unit_RussianAT.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianAT.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[0]) {
+			if(GUI.tooltip == "RussianAT"){
+				unit_RussianAT.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[0] != ""){
+				unit_RussianAT.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[0] = GUI.tooltip;
 		}
 
 
@@ -482,10 +488,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianBomber_offscreen2, new GUIContent("Russian Bomber x" + amountPurchased[1], "RussianBomber"));
-		if (GUI.tooltip == "RussianBomber") {
-			unit_RussianBomber.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianBomber.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[1]) {
+			if(GUI.tooltip == "RussianBomber"){
+				unit_RussianBomber.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[1] != ""){
+				unit_RussianBomber.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[1] = GUI.tooltip;
 		}
 
 
@@ -497,10 +508,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianCannon_offscreen2, new GUIContent("Russian Cannon x" + amountPurchased[2], "RussianCannon"));
-		if (GUI.tooltip == "RussianCannon") {
-			unit_RussianCannon.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianCannon.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[2]) {
+			if(GUI.tooltip == "RussianCannon"){
+				unit_RussianCannon.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[2] != ""){
+				unit_RussianCannon.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[2] = GUI.tooltip;
 		}
 
 
@@ -512,10 +528,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianFighter_offscreen2, new GUIContent("Russian Fighter x" + amountPurchased[3], "RussianFighter"));
-		if (GUI.tooltip == "RussianFighter") {
-			unit_RussianFighter.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianFighter.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[3]) {
+			if(GUI.tooltip == "RussianFighter"){
+				unit_RussianFighter.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[3] != ""){
+				unit_RussianFighter.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[3] = GUI.tooltip;
 		}
 
 		// Make the RussianSniper button and if its clicked purchase it!
@@ -526,10 +547,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianSniper_offscreen2, new GUIContent("Russian Sniper x" + amountPurchased[4], "RussianSniper"));
-		if (GUI.tooltip == "RussianSniper") {
-			unit_RussianSniper.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianSniper.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[4]) {
+			if(GUI.tooltip == "RussianSniper"){
+				unit_RussianSniper.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[4] != ""){
+				unit_RussianSniper.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[4] = GUI.tooltip;
 		}
 
 		// Make the RussianSquad button and if its clicked purchase it!
@@ -540,10 +566,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(RussianSquad_offscreen2, new GUIContent("Russian Squad x" + amountPurchased[5], "RussianSquad"));
-		if (GUI.tooltip == "RussianSquad") {
-			unit_RussianSquad.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_RussianSquad.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[5]) {
+			if(GUI.tooltip == "RussianSquad"){
+				unit_RussianSquad.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[5] != ""){
+				unit_RussianSquad.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[5] = GUI.tooltip;
 		}
 
 		// Make the t28 button and if its clicked purchase it!
@@ -554,10 +585,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(t28_offscreen2, new GUIContent("T-28 x" + amountPurchased[6], "t28"));
-		if (GUI.tooltip == "t28") {
-			unit_t28.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_t28.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[6]) {
+			if(GUI.tooltip == "t28"){
+				unit_t28.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[6] != ""){
+				unit_t28.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[6] = GUI.tooltip;
 		}
 
 
@@ -569,10 +605,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(t34_offscreen2, new GUIContent("T-34 x" + amountPurchased[7], "t34"));
-		if (GUI.tooltip == "t34") {
-			unit_t34.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_t34.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[7]) {
+			if(GUI.tooltip == "t34"){
+				unit_t34.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[7] != ""){
+				unit_t34.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[7] = GUI.tooltip;
 		}
 
 
@@ -584,10 +625,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(t60_offscreen2, new GUIContent("T-60 x" + amountPurchased[8], "t60"));
-		if (GUI.tooltip == "t60") {
-			unit_t60.transform.position = new Vector3((float).5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_t60.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[8]) {
+			if(GUI.tooltip == "t60"){
+				unit_t60.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[8] != ""){
+				unit_t60.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[8] = GUI.tooltip;
 		}
 
 
@@ -600,10 +646,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(Flak30_offscreen2, new GUIContent("Flak30 x" + amountPurchased[9], "Flak30"));
-		if (GUI.tooltip == "Flak30") {
-			unit_Flak30.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_Flak30.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[9]) {
+			if(GUI.tooltip == "Flak30"){
+				unit_Flak30.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[9] != ""){
+				unit_Flak30.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[9] = GUI.tooltip;
 		}
 
 
@@ -615,10 +666,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(GermanAT_offscreen2, new GUIContent("German AT x" + amountPurchased[10], "GermanAT"));
-		if (GUI.tooltip == "GermanAT") {
-			unit_GermanAT.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_GermanAT.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[10]) {
+			if(GUI.tooltip == "GermanAT"){
+				unit_GermanAT.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[10] != ""){
+				unit_GermanAT.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[10] = GUI.tooltip;
 		}
 
 
@@ -630,10 +686,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(GermanBomber_offscreen2, new GUIContent("German Bomber x" + amountPurchased[11], "GermanBomber"));
-		if (GUI.tooltip == "GermanBomber") {
-			unit_GermanBomber.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_GermanBomber.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[11]) {
+			if(GUI.tooltip == "GermanBomber"){
+				unit_GermanBomber.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[11] != ""){
+				unit_GermanBomber.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[11] = GUI.tooltip;
 		}
 
 
@@ -645,10 +706,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(GermanFighter_offscreen2, new GUIContent("German Fighter x" + amountPurchased[12], "GermanFighter"));
-		if (GUI.tooltip == "GermanFighter") {
-			unit_GermanFighter.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_GermanFighter.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[12]) {
+			if(GUI.tooltip == "GermanFighter"){
+				unit_GermanFighter.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[12] != ""){
+				unit_GermanFighter.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[12] = GUI.tooltip;
 		}
 
 
@@ -660,10 +726,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(GermanSniper_offscreen2, new GUIContent("German Sniper x" + amountPurchased[13], "GermanSniper"));
-		if (GUI.tooltip == "GermanSniper") {
-			unit_GermanSniper.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_GermanSniper.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[13]) {
+			if(GUI.tooltip == "GermanSniper"){
+				unit_GermanSniper.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[13] != ""){
+				unit_GermanSniper.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[13] = GUI.tooltip;
 		}
 
 
@@ -675,10 +746,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(GermanSquad_offscreen2, new GUIContent("German Squad x" + amountPurchased[14], "GermanSquad"));
-		if (GUI.tooltip == "GermanSquad") {
-			unit_GermanSquad.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_GermanSquad.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[14]) {
+			if(GUI.tooltip == "GermanSquad"){
+				unit_GermanSquad.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[14] != ""){
+				unit_GermanSquad.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[14] = GUI.tooltip;
 		}
 
 
@@ -690,10 +766,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(panther_offscreen2, new GUIContent("Panther x" + amountPurchased[15], "panther"));
-		if (GUI.tooltip == "panther") {
-			unit_panther.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_panther.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[15]) {
+			if(GUI.tooltip == "panther"){
+				unit_panther.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[15] != ""){
+				unit_panther.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[15] = GUI.tooltip;
 		}
 
 
@@ -705,10 +786,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(Panzer4_offscreen2, new GUIContent("Panzer4 x" + amountPurchased[16], "Panzer4"));
-		if (GUI.tooltip == "Panzer4") {
-			unit_Panzer4.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_Panzer4.transform.position = new Vector3(10, (float).345, -3);
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[16]) {
+			if(GUI.tooltip == "Panzer4"){
+				unit_Panzer4.transform.position = new Vector3((float)0.5, (float).345, -3);
+				audio.PlayOneShot (hoverOver);
+			}
+			if(lastTip[16] != ""){
+				unit_Panzer4.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[16] = GUI.tooltip;
 		}
 
 
@@ -720,15 +806,15 @@ public class UnitSelection : MonoBehaviour {
 			}
 		}
 		GUI.Button(Wirbelwind_offscreen2, new GUIContent("Wirbelwind x" + amountPurchased[17], "Wirbelwind"));
-		if (GUI.tooltip == "Wirbelwind") {
-			if(!boopPlayed){
+		if (Event.current.type == EventType.Repaint && GUI.tooltip != lastTip[17]) {
+			if(GUI.tooltip == "Wirbelwind"){
+				unit_Wirbelwind.transform.position = new Vector3((float)0.5, (float).345, -3);
 				audio.PlayOneShot (hoverOver);
-				boopPlayed = true;
 			}
-			unit_Wirbelwind.transform.position = new Vector3((float)0.5, (float).345, -3);
-		}else if(GUI.tooltip == "" ){
-			unit_Wirbelwind.transform.position = new Vector3(10, (float).345, -3);
-			//boopPlayed = false;
+			if(lastTip[17] != "" && GUI.tooltip != "Wirbelwind"){
+				unit_Wirbelwind.transform.position = new Vector3(10, (float).345, -3);
+			}
+			lastTip[17] = GUI.tooltip;
 		}
 
 	}
