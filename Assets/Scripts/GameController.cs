@@ -85,6 +85,11 @@ public class GameController : MonoBehaviour {
 			}
 			else
 				unitCounter[i].GetComponent<unitStatScript>().picked = false;
+			
+			unitCounter[i].GetComponent<unitStatScript>().isMoving = false;
+			unitCounter[i].GetComponent<unitStatScript>().isAttacking = false;
+
+
 		}
 		hideAllMoves ();
 		attackStep = false;
