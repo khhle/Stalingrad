@@ -87,6 +87,8 @@ public class unitStatScript : MonoBehaviour {
 			gameController.attackStep = true;
 			isMoving = false;
 			gameController.hideAllMoves();
+			picked = true;
+			gameController.pickedObject(this);
 		}
 		else if (!hasAttacked && isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
 			hasAttacked = true;
