@@ -92,10 +92,11 @@ public class unitStatScript : MonoBehaviour {
 		}
 	}
 
-	public void attackEnemy(int tempRange){
+	public void attackEnemy(int tempRange,float timeDestroy){
 		
 		if (weapon != null )
 		{
+			weapon.timeDestroy = timeDestroy;
 			rangeClicked = tempRange;
 			weapon.angleF = angle;
 			weapon.changeAngle();

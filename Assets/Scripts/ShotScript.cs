@@ -7,6 +7,7 @@ public class ShotScript : MonoBehaviour
 	public int teamNumber;
 	public bool isCounter = false;
 	public int shotRange;
+	public float timeDestroy = 1;
 
 	public unitStatScript parentsStats;
 	private GameController gameController;
@@ -16,8 +17,8 @@ public class ShotScript : MonoBehaviour
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
 		}
-		
-		Destroy(gameObject, 1);
+		Debug.Log ("time!" + timeDestroy);
+		Destroy(gameObject, timeDestroy);
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCollider){ 

@@ -126,10 +126,12 @@ public class moveGrandParent : MonoBehaviour {
 				grandParentStats.angle = angle;
 				grandParentStats.isRepeat = true;
 
-
+				//gettimeDestroy for each bullet
+				float timeDestroy1 = transform.parent.GetComponent<ringScript>().rangeValue * 0.5f;
+				Debug.Log ("destr" + timeDestroy1);
 				//Turns Skip Attack Button off after attacking
 				transform.parent.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
-				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue);
+				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue,timeDestroy1);
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
 
 					// false because the player is not an enemy
