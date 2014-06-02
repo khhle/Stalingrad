@@ -16,7 +16,7 @@ public class moveGrandParent : MonoBehaviour {
 	public int angle_type;
 	public float angle;
 	private Color originalColor;
-	private unitStatScript grandParentStats;
+	public unitStatScript grandParentStats;
 	public GameController gameController;
 
 	private float x1;
@@ -81,8 +81,9 @@ public class moveGrandParent : MonoBehaviour {
 			float x1 = this.transform.position.x;
 			float y1 = this.transform.position.y;
 			//float z1 = this.transform.position.z;
-			if(isCollide == false)
+			if(isCollide == false){
 				this.transform.position = new Vector3(x1,y1,20);
+			}
 		}
 
 	}
@@ -107,9 +108,12 @@ public class moveGrandParent : MonoBehaviour {
 			float y1 = gameObject.transform.position.y;
 			//float z1 = gameObject.transform.position.z;
 			if (isClick == true && !gameController.attackStep) {
+				grandParentStats.picked = true;
+				gameController.pickedObject(grandParentStats);
 				gameObject.transform.parent.transform.parent.parent.transform.position = new Vector3 (x1, y1, 0);
 				//remove this for multiple moves. Put it on a counter if the unit has multiple moves for now.
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
+				gameController.hideAllMoves();
 
 				transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining -=1;
 				if(transform.parent.transform.parent.parent.GetComponent<unitStatScript>().movesRemaining <=0 )
@@ -122,7 +126,7 @@ public class moveGrandParent : MonoBehaviour {
 		{
 			//WeaponScript weapon = GetComponent<WeaponScript> ();
 			//if (weapon != null) {
-			if (isClick == true) {
+			if (isClick == true && gameController.attackStep) {
 				grandParentStats.angle = angle;
 				grandParentStats.isRepeat = true;
 

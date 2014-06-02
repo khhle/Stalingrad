@@ -41,6 +41,9 @@ public class unitStatScript : MonoBehaviour {
 	//keeping track of the range that was just clicked for attacking
 	public int rangeClicked;
 
+	//keeps track of if this unit is the one the player pciked this turn
+	public bool picked;
+
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {

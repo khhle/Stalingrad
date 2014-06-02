@@ -22,12 +22,12 @@ public class ShotScript : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCollider){ 
-			stone_script stone = otherCollider.gameObject.GetComponent<stone_script> ();
-			if (stone != null) {
-				//Debug.Log ("Collide stone!");	
-				SpecialEffectsHelper.Instance.Explosion (transform.position);
-				Destroy (gameObject);
-			}
+		stone_script stone = otherCollider.gameObject.GetComponent<stone_script> ();
+		if (stone != null) {
+			//Debug.Log ("Collide stone!");	
+			SpecialEffectsHelper.Instance.Explosion (transform.position);
+			Destroy (gameObject);
+		}
 		//this is where the damage calculations take place. otherStats is the enemy unit's stats
 		unitStatScript otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
 		if (otherStats != null && otherStats.playerOwner == 1 && teamNumber == 2) {
@@ -37,6 +37,7 @@ public class ShotScript : MonoBehaviour
 			int tempDefense = Random.Range (0, otherStats.defense);
 			if(attackPower > tempDefense)
 				otherStats.health -= (attackPower - tempDefense);
+			Destroy (gameObject);
 		}else if (otherStats != null && otherStats.playerOwner == 2  && teamNumber == 1) {
 
 			SpecialEffectsHelper.Instance.Explosion (transform.position);
@@ -45,7 +46,9 @@ public class ShotScript : MonoBehaviour
 			int tempDefense = Random.Range (0, otherStats.defense);
 			if(attackPower > tempDefense)
 				otherStats.health -= (attackPower - tempDefense);
+			Destroy (gameObject);
 		}
+
 	}
 
 	void counterAttack( unitStatScript otherStats)

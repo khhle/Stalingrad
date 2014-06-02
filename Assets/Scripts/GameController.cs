@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 		playerTurn = 1;
+		turnChange (playerTurn);
 	}
 	
 	// Update is called once per frame
@@ -80,10 +81,22 @@ public class GameController : MonoBehaviour {
 			{
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 				unitCounter[i].GetComponent<unitStatScript>().hasAttacked = false;
+				unitCounter[i].GetComponent<unitStatScript>().picked = true;
 			}
+			else
+				unitCounter[i].GetComponent<unitStatScript>().picked = false;
 		}
 		hideAllMoves ();
 		attackStep = false;
+	}
+
+	public void pickedObject(unitStatScript pickedObject){
+		for (int i = 0; i < unitCounter.Length; i++) {
+			if(unitCounter[i].GetComponent<unitStatScript>() != pickedObject)
+			{
+				unitCounter[i].GetComponent<unitStatScript>().picked = false;
+			}
+		}
 	}
 
 	public void hideAllMoves()
