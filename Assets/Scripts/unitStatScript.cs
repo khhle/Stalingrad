@@ -22,6 +22,9 @@ public class unitStatScript : MonoBehaviour {
 	public bool canShootTank;
 	public bool canShootPlane;
 	public bool hasSplash;
+	public bool isTank;
+	public bool isInfantry;
+	public bool isPlane;
 
 	public GUIText statText;
 
