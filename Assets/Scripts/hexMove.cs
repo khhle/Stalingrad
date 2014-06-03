@@ -131,14 +131,149 @@ public class hexMove : MonoBehaviour {
 
 	//mouse hover overs unit
 	void OnMouseEnter() {
-		if (parentStats.id == 0 && !parentStats.isClicked)
-			unit_RussianAT.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+		switch (parentStats.id){
+			//Russian Units
+			case 0:
+				if(!parentStats.isClicked)
+					unit_RussianAT.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 1:
+				if(!parentStats.isClicked)
+					unit_RussianBomber.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 2:
+				if(!parentStats.isClicked)
+					unit_RussianCannon.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 3:
+				if(!parentStats.isClicked)
+					unit_RussianFighter.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 4:
+				if(!parentStats.isClicked)
+					unit_RussianSniper.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 5:
+				if(!parentStats.isClicked)
+					unit_RussianSquad.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 6:
+				if(!parentStats.isClicked)
+					unit_t28.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 7:
+				if(!parentStats.isClicked)
+					unit_t34.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 8:
+				if(!parentStats.isClicked)
+					unit_t60.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			//German Units
+			case 9:
+				if(!parentStats.isClicked)
+					unit_Flak30.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 10:
+				if(!parentStats.isClicked)
+					unit_GermanAT.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 11:
+				if(!parentStats.isClicked)
+					unit_GermanBomber.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 12:
+				if(!parentStats.isClicked)
+					unit_GermanFighter.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 13:
+				if(!parentStats.isClicked)
+					unit_GermanSniper.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 14:
+				if(!parentStats.isClicked)
+					unit_GermanSquad.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 15:
+				if(!parentStats.isClicked)
+					unit_panther.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 16:
+				if(!parentStats.isClicked)
+					unit_Panzer4.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			case 17:
+				if(!parentStats.isClicked)
+					unit_Wirbelwind.transform.position = new Vector3(Input.mousePosition.x/Screen.width, Input.mousePosition.y/Screen.height + .275f, -3);
+				break;
+			default:
+				break;
+		}
 	}
 	
 	//mouse exits hover
 	void OnMouseExit() {
-		if (parentStats.id == 0)
-			unit_RussianAT.transform.position = new Vector3(10, .345f, -3);
+		switch (parentStats.id){
+			case 0:
+				unit_RussianAT.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 1:
+				unit_RussianBomber.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 2:
+				unit_RussianCannon.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 3:
+				unit_RussianFighter.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 4:
+				unit_RussianSniper.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 5:
+				unit_RussianSquad.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 6:
+				unit_t28.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 7:
+				unit_t34.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 8:
+				unit_t60.transform.position = new Vector3(10, .345f, -3);
+				break;
+
+			case 9:
+				unit_Flak30.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 10:
+				unit_GermanAT.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 11:
+				unit_GermanBomber.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 12:
+				unit_GermanFighter.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 13:
+				unit_GermanSniper.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 14:
+				unit_GermanSquad.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 15:
+				unit_panther.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 16:
+				unit_Panzer4.transform.position = new Vector3(10, .345f, -3);
+				break;
+			case 17:
+				unit_Wirbelwind.transform.position = new Vector3(10, .345f, -3);
+				break;
+
+			default:
+				break;
+		}
+
 	}
 
 
