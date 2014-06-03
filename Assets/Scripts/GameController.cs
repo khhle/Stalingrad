@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
 		//find out how many units there are per player initially to easily keep track of loss
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		for (int i = 0; i < unitCounter.Length; i++) {
+			unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == 1)
 			{
 				player1Units += 1;
@@ -77,19 +78,20 @@ public class GameController : MonoBehaviour {
 		playerTurn = player;
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		for (int i = 0; i < unitCounter.Length; i++) {
+			unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == player)
 			{
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 				unitCounter[i].GetComponent<unitStatScript>().hasAttacked = false;
 				unitCounter[i].GetComponent<unitStatScript>().picked = true;
+				//unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 			}
-			else
+			else{
 				unitCounter[i].GetComponent<unitStatScript>().picked = false;
-			
+				//unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
+			}
 			unitCounter[i].GetComponent<unitStatScript>().isMoving = false;
 			unitCounter[i].GetComponent<unitStatScript>().isAttacking = false;
-
-
 		}
 		hideAllMoves ();
 		attackStep = false;
