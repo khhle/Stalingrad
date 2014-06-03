@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	public int player1Units = 0;
 	public int player2Units = 0;
 	public bool isGameOver = false;
-
+	private bool placement = true; 
 	//keeps track of whose turn it is and if it's the attack step
 	public int playerTurn;
 	public bool attackStep = false;
@@ -56,11 +56,11 @@ public class GameController : MonoBehaviour {
 		}
 		player1Units = temp1Units;
 		player2Units = temp2Units;
-		if (player1Units == 0)
+		if (player1Units == 0 && !placement)
 		{
 			GameOver (2);
 		}
-		else if( player2Units == 0)
+		else if( player2Units == 0 && !placement)
 		{
 			GameOver (1);
 		}
@@ -117,4 +117,6 @@ public class GameController : MonoBehaviour {
 		GameOverText.text = "Player " + winner + " wins!\n" +
 						"Press 'R' to begin a new game";
 	}
+
+
 }
