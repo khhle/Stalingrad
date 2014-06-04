@@ -27,7 +27,6 @@ public class unitStatScript : MonoBehaviour {
 	public bool isPlane;
 
 	public GUIText statText;
-
 	//What kind of unit it is, ie tank, plane, infantry.
 	public string unitType;
 

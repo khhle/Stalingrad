@@ -14,6 +14,11 @@ public class WeaponScript : MonoBehaviour
 	private int teamNumber;
 	public float timeDestroy;
 
+	
+	public AudioClip infantryshot;
+	public AudioClip tankshot;
+	public AudioClip planeshot;
+
 	/// Projectile prefab for shooting
 	public Transform shotPrefab;
 	
@@ -93,6 +98,13 @@ public class WeaponScript : MonoBehaviour
 			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 			if (shot != null)
 			{
+				if(parentsStats.isTank){
+					audio.PlayOneShot(tankshot);
+				}else if(parentsStats.isPlane){
+					audio.PlayOneShot(planeshot);
+				}else if(parentsStats.isInfantry){
+					audio.PlayOneShot(infantryshot);
+				}
 				shot.timeDestroy = timeDestroy;
 				shot.shotRange = parentsStats.rangeClicked; //give it the range of the ring that was clicked on
 				shot.teamNumber = teamNumber;
