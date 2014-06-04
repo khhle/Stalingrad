@@ -32,13 +32,24 @@ public class fixPosition : MonoBehaviour {
 		x1 = (float)Math.Round (x1);
 		y1 = (float)Math.Round (y1,1);
 		//if it's in an odd column, round to the nearest 0.5, else round to the nearest whole number
-		if(x1 % 2 == 1)
+		int tempx = (int)Math.Abs (x1);
+		if(tempx % 2 == 1)
 		{
 			deci = y1 * 10 % 10;
-			y1 *= 10;
-			y1 -= deci;
-			y1 = y1 /10;
-			y1 += 0.5f;
+			if(deci != 5 || deci != -5){
+				if(y1 > 0)
+				{
+					y1 *= 10;
+					y1 -= deci;
+					y1 = y1 /10;
+					y1 += 0.5f;
+				}
+				else
+				{
+					y1 = (float) Math.Truncate(y1);
+					y1 -= 0.5f;
+				}
+			}
 		}
 		else
 		{
