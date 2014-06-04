@@ -44,6 +44,8 @@ public class unitStatScript : MonoBehaviour {
 	public bool isRepeat = false;
 	public bool isInit = false;
 
+	public Vector3 tempPos;
+
 	//keeping track of the range that was just clicked for attacking
 	public int rangeClicked;
 
@@ -62,14 +64,16 @@ public class unitStatScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		tempPos = gameController.mainCam.WorldToScreenPoint (this.transform.position);
 		if(gameController.playerTurn == 1)
 		{
-			statText.transform.position = new Vector2 ((transform.position.x + 8) /16f, (transform.position.y + 5) / 10f);
+			statText.transform.position = new Vector2 (tempPos.x/ 960f, tempPos.y / 600f);
 		}
 		else
 		{
-			statText.transform.position = new Vector2 (1 - ((transform.position.x + 8) /16f), 1 - ((transform.position.y + 5) / 10f));
+			statText.transform.position = new Vector2 ((tempPos.x / 960f), (tempPos.y / 600f));
 		}
+
 
 		if (statText != null)
 			statText.text = attack + "  "+ health +"  " + defense;
@@ -112,6 +116,7 @@ public class unitStatScript : MonoBehaviour {
 			weapon.angleF = angle;
 			weapon.changeAngle();
 			weapon.isRepeat = isRepeat;
+			this.transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 		}
 		
 	}

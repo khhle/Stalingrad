@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
 	public int playerTurn;
 	public bool attackStep = false;
 
+	public Camera mainCam;
+
 	// Use this for initialization
 	void Start () {
 		//find out how many units there are per player initially to easily keep track of loss
@@ -34,9 +36,10 @@ public class GameController : MonoBehaviour {
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 			}
 		}
+		mainCam = GameObject.FindGameObjectWithTag ("MainCamera").camera;
 		playerTurn = 1;
 		turnChange (playerTurn);
-		Invoke ("getCarry", 0.1f);
+		Invoke ("getCarry", .1f);
 	}
 
 	//function that gets data carry values from selection scene into maingame
@@ -118,11 +121,9 @@ public class GameController : MonoBehaviour {
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
 				unitCounter[i].GetComponent<unitStatScript>().hasAttacked = false;
 				unitCounter[i].GetComponent<unitStatScript>().picked = true;
-				//unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 			}
 			else{
 				unitCounter[i].GetComponent<unitStatScript>().picked = false;
-				//unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 			}
 			unitCounter[i].GetComponent<unitStatScript>().isMoving = false;
 			unitCounter[i].GetComponent<unitStatScript>().isAttacking = false;

@@ -27,11 +27,17 @@ public class WeaponScript : MonoBehaviour
 	private int angle;
 	public float angleF;
 	private unitStatScript parentsStats;
+
+	private GameController gameController;
 	
 	void Start()
 	{
 		parentsStats = transform.GetComponent<unitStatScript> ();
 		teamNumber = parentsStats.playerOwner;
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
 	}
 	
 	void Update()
@@ -48,7 +54,10 @@ public class WeaponScript : MonoBehaviour
 			float tempangle = this.transform.rotation.z *-1;
 			//Debug.Log ("tempangle! " + tempangle);
 			this.transform.Rotate(x1,y1,tempangle);
-			this.transform.rotation = new Quaternion(0,0,0, 0);
+			if(gameController.playerTurn == 1)
+				this.transform.rotation = new Quaternion(0,0,0, 0);
+			else
+				this.transform.rotation = new Quaternion(180,0,0, 0);
 		}
 	}
 
