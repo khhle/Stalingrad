@@ -42,25 +42,28 @@ public class GameController : MonoBehaviour {
 	//function that gets data carry values from selection scene into maingame
 	void getCarry(){
 		GameObject carry = GameObject.Find("Data Carry");
-		rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT;
-		rusUnitAmount[1] = carry.GetComponent<Data_Carry>().russianBomber;
-		rusUnitAmount[2] = carry.GetComponent<Data_Carry>().russianCannon;
-		rusUnitAmount[3] = carry.GetComponent<Data_Carry>().russianFighter;
-		rusUnitAmount[4] = carry.GetComponent<Data_Carry>().russianSniper;
-		rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad;
-		rusUnitAmount[6] = carry.GetComponent<Data_Carry>().t28;
-		rusUnitAmount[7] = carry.GetComponent<Data_Carry>().t34;
-		rusUnitAmount[8] = carry.GetComponent<Data_Carry>().t60;
+		if(carry != null)
+		{
+			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT;
+			rusUnitAmount[1] = carry.GetComponent<Data_Carry>().russianBomber;
+			rusUnitAmount[2] = carry.GetComponent<Data_Carry>().russianCannon;
+			rusUnitAmount[3] = carry.GetComponent<Data_Carry>().russianFighter;
+			rusUnitAmount[4] = carry.GetComponent<Data_Carry>().russianSniper;
+			rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad;
+			rusUnitAmount[6] = carry.GetComponent<Data_Carry>().t28;
+			rusUnitAmount[7] = carry.GetComponent<Data_Carry>().t34;
+			rusUnitAmount[8] = carry.GetComponent<Data_Carry>().t60;
 
-		gerUnitAmount[0] = carry.GetComponent<Data_Carry>().flak30;
-		gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT;
-		gerUnitAmount[2] = carry.GetComponent<Data_Carry>().germanBomber;
-		gerUnitAmount[3] = carry.GetComponent<Data_Carry>().germanFighter;
-		gerUnitAmount[4] = carry.GetComponent<Data_Carry>().germanSniper;
-		gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad;
-		gerUnitAmount[6] = carry.GetComponent<Data_Carry>().panther;
-		gerUnitAmount[7] = carry.GetComponent<Data_Carry>().panzer4;
-		gerUnitAmount[8] = carry.GetComponent<Data_Carry>().wirbelwind;
+			gerUnitAmount[0] = carry.GetComponent<Data_Carry>().flak30;
+			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT;
+			gerUnitAmount[2] = carry.GetComponent<Data_Carry>().germanBomber;
+			gerUnitAmount[3] = carry.GetComponent<Data_Carry>().germanFighter;
+			gerUnitAmount[4] = carry.GetComponent<Data_Carry>().germanSniper;
+			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad;
+			gerUnitAmount[6] = carry.GetComponent<Data_Carry>().panther;
+			gerUnitAmount[7] = carry.GetComponent<Data_Carry>().panzer4;
+			gerUnitAmount[8] = carry.GetComponent<Data_Carry>().wirbelwind;
+		}
 	}
 
 	// Update is called once per frame
