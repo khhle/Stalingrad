@@ -31,18 +31,19 @@ public class fixPosition : MonoBehaviour {
 		float deci;
 		x1 = (float)Math.Round (x1);
 		y1 = (float)Math.Round (y1,1);
-		//if(x1 % 2 == 1)
-		//{
+		//if it's in an odd column, round to the nearest 0.5, else round to the nearest whole number
+		if(x1 % 2 == 1)
+		{
 			deci = y1 * 10 % 10;
-			if (deci >= 3 && deci <= 7) {
-				y1 = (float)Math.Round (y1);
-				y1 += 0.5f;
-			}
-			else
-			{
-				y1 = (float)Math.Round (y1);
-			}
-		//}
+			y1 *= 10;
+			y1 -= deci;
+			y1 = y1 /10;
+			y1 += 0.5f;
+		}
+		else
+		{
+			y1 = (float)Math.Round (y1);
+		}
 		Debug.Log (x1 + " " + y1);
 		this.transform.position = new Vector3 (x1, y1, z1);
 
