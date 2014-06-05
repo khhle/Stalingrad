@@ -38,23 +38,31 @@ public class cameraRotationScript : MonoBehaviour {
 			*/
 			if(turnNumber == 1){
 			if(Input.GetKey ("up"))
-				cameraPos.y+= 0.25f;
+				if(cameraPos.y < 10)
+					cameraPos.y+= 0.25f;
 			if(Input.GetKey ("down"))
-				cameraPos.y-= 0.25f;
+				if(cameraPos.y > -10)
+					cameraPos.y-= 0.25f;
 			if(Input.GetKey ("left"))
-				cameraPos.x-= 0.25f;
+				if(cameraPos.x > -15)
+					cameraPos.x-= 0.25f;
 			if(Input.GetKey ("right"))
+				if(cameraPos.x < 15)
 				cameraPos.x+= 0.25f;
 
 			}else{
 			if(Input.GetKey ("up"))
-				cameraPos.y-= 0.25f;
+				if(cameraPos.y > -10)
+					cameraPos.y-= 0.25f;
 			if(Input.GetKey ("down"))
-				cameraPos.y+= 0.25f;
+				if(cameraPos.y < 10)
+					cameraPos.y+= 0.25f;
 			if(Input.GetKey ("left"))
-				cameraPos.x+= 0.25f;
+				if(cameraPos.x < 15)
+					cameraPos.x+= 0.25f;
 			if(Input.GetKey ("right"))
-				cameraPos.x-= 0.25f;
+				if(cameraPos.x > -15)
+					cameraPos.x-= 0.25f;
 
 			}
 			
