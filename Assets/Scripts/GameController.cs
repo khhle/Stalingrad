@@ -27,7 +27,10 @@ public class GameController : MonoBehaviour {
 
 	public Camera mainCam;
 
+	//placementphase variables
 	public bool isPlacement = true;
+	public int germansLeft;
+	public int russiansLeft;
 
 
 	// Use this for initialization
@@ -56,6 +59,8 @@ public class GameController : MonoBehaviour {
 	//function that gets data carry values from selection scene into maingame
 	void getCarry(){
 		GameObject carry = GameObject.Find("Data Carry");
+		russiansLeft = 0; 
+		germansLeft = 0;
 		if(carry != null)
 		{
 			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT;
@@ -78,6 +83,12 @@ public class GameController : MonoBehaviour {
 			gerUnitAmount[7] = carry.GetComponent<Data_Carry>().panzer4;
 			gerUnitAmount[8] = carry.GetComponent<Data_Carry>().wirbelwind;
 		}
+		for (int i = 0; i< 9; i++) {
+			russiansLeft += rusUnitAmount[i];
+		}
+		for (int i = 0; i< 9; i++) {
+			germansLeft += gerUnitAmount[i];
+		}
 	}
 
 	void OnGUI(){
@@ -88,6 +99,7 @@ public class GameController : MonoBehaviour {
 				rusUnitAdded++;
 			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 30*rusUnitAdded, 130, 20), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
+				russiansLeft--;
 				if(rusName[i] == "Russian AT"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -147,6 +159,7 @@ public class GameController : MonoBehaviour {
 			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(830, 0 + 30*gerUnitAdded, 130, 20), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
+				germansLeft--;
 
 				if(gerName[i] == "Flak30"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
