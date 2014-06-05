@@ -63,22 +63,22 @@ public class GameController : MonoBehaviour {
 		germansLeft = 0;
 		if(carry != null)
 		{
-			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT;
+			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT*2;
 			rusUnitAmount[1] = carry.GetComponent<Data_Carry>().russianBomber;
 			rusUnitAmount[2] = carry.GetComponent<Data_Carry>().russianCannon;
 			rusUnitAmount[3] = carry.GetComponent<Data_Carry>().russianFighter;
 			rusUnitAmount[4] = carry.GetComponent<Data_Carry>().russianSniper;
-			rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad;
+			rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad*3;
 			rusUnitAmount[6] = carry.GetComponent<Data_Carry>().t28;
 			rusUnitAmount[7] = carry.GetComponent<Data_Carry>().t34;
 			rusUnitAmount[8] = carry.GetComponent<Data_Carry>().t60;
 
 			gerUnitAmount[0] = carry.GetComponent<Data_Carry>().flak30;
-			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT;
+			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT*2;
 			gerUnitAmount[2] = carry.GetComponent<Data_Carry>().germanBomber;
 			gerUnitAmount[3] = carry.GetComponent<Data_Carry>().germanFighter;
 			gerUnitAmount[4] = carry.GetComponent<Data_Carry>().germanSniper;
-			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad;
+			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad*2;
 			gerUnitAmount[6] = carry.GetComponent<Data_Carry>().panther;
 			gerUnitAmount[7] = carry.GetComponent<Data_Carry>().panzer4;
 			gerUnitAmount[8] = carry.GetComponent<Data_Carry>().wirbelwind;
