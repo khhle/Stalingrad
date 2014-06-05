@@ -208,7 +208,7 @@ public class GameController : MonoBehaviour {
 			if(Input.GetMouseButtonDown(0))
 				unitFlag = false;
 			if(unitFlag)
-				unitt.transform.position = ray.origin + new Vector3(0, 0, 1f);	
+				unitt.transform.position = ray.origin + new Vector3(0, 0, .11f);	
 		}
 
 		if(isGameOver && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.R)))
