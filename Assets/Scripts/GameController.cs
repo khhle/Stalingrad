@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
 
 	public Camera mainCam;
 
+	public bool isPlacement = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -209,6 +211,7 @@ public class GameController : MonoBehaviour {
 				unitFlag = false;
 			if(unitFlag)
 				unitt.transform.position = ray.origin + new Vector3(0, 0, .11f);	
+			unitt.transform.position =  new Vector3(unitt.transform.position.x, unitt.transform.position.y, 0);
 		}
 
 		if(isGameOver && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.R)))
@@ -251,10 +254,17 @@ public class GameController : MonoBehaviour {
 
 	public void turnChange (int player)
 	{
+		bool changedplayer;
+		if (playerTurn == player)
+				changedplayer = false;
+		else
+				changedplayer = true;
 		playerTurn = player;
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		for (int i = 0; i < unitCounter.Length; i++) {
-			unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
+			if(changedplayer){
+				unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
+			}
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == player)
 			{
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;
