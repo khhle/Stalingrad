@@ -8,7 +8,6 @@ public class ShotScript : MonoBehaviour
 	public bool isCounter = false;
 	public int shotRange;
 	public float timeDestroy = 1;
-
 	public unitStatScript parentsStats;
 	private GameController gameController;
 	void Start()
@@ -36,6 +35,7 @@ public class ShotScript : MonoBehaviour
 
 			if(otherStats.isTank && parentsStats.canShootTank|| otherStats.isPlane && parentsStats.canShootPlane
 			   || otherStats.isInfantry && parentsStats.canShootInfantry){
+
 			//deals damage equal to this attack power minus arandom value of defense.
 			int tempDefense = Random.Range (0, otherStats.defense);
 			if(attackPower > tempDefense)
