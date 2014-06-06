@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class hexMove : MonoBehaviour {
-	private Color mouseOverColor = Color.cyan;
 	private Color originalColor ;
 	public bool isAvail = false ;
 	private GameController gameController;

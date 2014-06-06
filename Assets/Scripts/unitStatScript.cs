@@ -98,14 +98,18 @@ public class unitStatScript : MonoBehaviour {
 		}
 	}
 
-	public void attackEnemy(int tempRange,float timeDestroy){
+	public void attackEnemy(int tempRange,float timeDestroy, bool counter){
 		
 		if (weapon != null )
 		{
 			weapon.timeDestroy = timeDestroy;
 			rangeClicked = tempRange;
 			weapon.angleF = angle;
-			weapon.changeAngle();
+			if(counter){
+				weapon.changeAngle(true);
+			}
+			else
+				weapon.changeAngle(false);
 			weapon.isRepeat = isRepeat;
 			this.transform.rotation *= Quaternion.AngleAxis (180, transform.right);
 		}

@@ -10,7 +10,6 @@ public class WeaponScript : MonoBehaviour
 
 	public bool isInit = false;
 	public bool isRepeat = false;
-	private float oldAngle = 0;
 	private int teamNumber;
 	public float timeDestroy;
 
@@ -52,7 +51,7 @@ public class WeaponScript : MonoBehaviour
 
 		if(isInit == true  )
 		{
-			Attack(false);
+			Attack(false, false);
 			isInit = false;
 
 			//Debug.Log ("z! " + this.transform.rotation.z);
@@ -68,14 +67,19 @@ public class WeaponScript : MonoBehaviour
 
 
 
-	public void changeAngle()
+	public void changeAngle(bool counter)
 	{
 
 		this.transform.Rotate(x1,y1,angleF);
 		//Debug.Log ("angelF! " + angleF);
 		//Debug.Log ("z before 2nd rotation! " + this.transform.rotation.z);
 		isInit = true;
-		Attack(false);
+		if(counter)
+		{
+			Attack(false, true);
+		}
+		else
+			Attack(false, false);
 	}
 	
 	//--------------------------------
@@ -83,7 +87,7 @@ public class WeaponScript : MonoBehaviour
 	//--------------------------------
 
 	/// Create a new projectile if possible
-	public void Attack(bool isEnemy)
+	public void Attack(bool isEnemy, bool counter)
 	{
 			
 		if(!parentsStats.hasAttacked){
@@ -109,6 +113,10 @@ public class WeaponScript : MonoBehaviour
 				shot.shotRange = parentsStats.rangeClicked; //give it the range of the ring that was clicked on
 				shot.teamNumber = teamNumber;
 				shot.parentsStats = parentsStats;
+				shot.angle = angleF;
+				shot.direction = this.transform.up;
+				if(counter)
+					shot.isCounter = true;
 				//assign a randomized damage value based off of unit's attack
 				shot.attackPower = Random.Range(0, parentsStats.attack);
 			}

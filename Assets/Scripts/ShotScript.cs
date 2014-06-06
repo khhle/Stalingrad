@@ -7,9 +7,12 @@ public class ShotScript : MonoBehaviour
 	public int teamNumber;
 	public bool isCounter = false;
 	public int shotRange;
+	public float angle;
 	public float timeDestroy = 1;
 	public unitStatScript parentsStats;
 	private GameController gameController;
+	public Vector2 direction;
+	public Transform shotPrefab;
 	void Start()
 	{
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
@@ -30,7 +33,6 @@ public class ShotScript : MonoBehaviour
 		//this is where the damage calculations take place. otherStats is the enemy unit's stats
 		unitStatScript otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
 		if (otherStats != null && otherStats.playerOwner == 1 && teamNumber == 2 ) {
-			counterAttack(otherStats);
 
 			if((otherStats.isTank && parentsStats.canShootTank) || (otherStats.isPlane && parentsStats.canShootPlane)
 			   || (otherStats.isInfantry && parentsStats.canShootInfantry))
@@ -40,10 +42,11 @@ public class ShotScript : MonoBehaviour
 				if(attackPower > tempDefense)
 					otherStats.health -= (attackPower - tempDefense);
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
+				if(!isCounter)
+					counterAttack (otherStats);
 				Destroy (gameObject);
 			}
 		}else if (otherStats != null && otherStats.playerOwner == 2  && teamNumber == 1) {
-			counterAttack (otherStats);
 
 			if((otherStats.isTank && parentsStats.canShootTank) || (otherStats.isPlane && parentsStats.canShootPlane)
 				   || (otherStats.isInfantry && parentsStats.canShootInfantry)){
@@ -52,6 +55,8 @@ public class ShotScript : MonoBehaviour
 				if(attackPower > tempDefense)
 					otherStats.health -= (attackPower - tempDefense);
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
+				if(!isCounter)
+					counterAttack (otherStats);
 				Destroy (gameObject);
 			}
 		}
@@ -60,15 +65,32 @@ public class ShotScript : MonoBehaviour
 
 	void counterAttack( unitStatScript otherStats)
 	{
-		if((otherStats.canShootTank && parentsStats.isTank) || (otherStats.canShootPlane && parentsStats.isPlane)
-		   || (otherStats.canShootInfantry && parentsStats.isInfantry)){
-			if (otherStats.range >= shotRange){
-				int tempDefense = Random.Range (0, parentsStats.defense);
-				int tempAttack = Random.Range (0, otherStats.attack);
-				int damage = tempAttack - tempDefense;
-				if(damage > 0)
-					parentsStats.health -= damage;
-			}
+		angle += 180;
+		otherStats.angle = angle;
+		var shotTransform = Instantiate(shotPrefab) as Transform;
+		
+		// Assign position
+		shotTransform.position = otherStats.transform.position;
+		
+		// The is enemy property
+		ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
+		if (shot != null)
+		{
+			shot.timeDestroy = otherStats.range * 0.5f;
+			shot.shotRange = otherStats.range;
+			shot.teamNumber = otherStats.playerOwner;
+			shot.parentsStats = otherStats;
+			shot.angle = angle;
+			shot.isCounter = true;
+			//assign a randomized damage value based off of unit's attack
+			shot.attackPower = Random.Range(0, otherStats.attack);
+		}
+		
+		// Make the weapon shot always towards it
+		moveScript2 move = shotTransform.gameObject.GetComponent<moveScript2>();
+		if (move != null)
+		{
+			move.direction = new Vector2(direction.x * -1, direction.y * -1); // towards in 2D space is the right of the sprite
 		}
 	}
 

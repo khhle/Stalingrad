@@ -16,7 +16,6 @@ public class moveGrandParent : MonoBehaviour {
 	public bool isGreen = true;
 	public int angle_type;
 	public float angle;
-	private Color originalColor;
 	public unitStatScript grandParentStats;
 	public GameController gameController;
 
@@ -28,7 +27,6 @@ public class moveGrandParent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		grandParentStats = transform.parent.parent.parent.GetComponent<unitStatScript> ();
-		originalColor = transform.GetComponent<SpriteRenderer> ().material.color;
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
@@ -145,7 +143,7 @@ public class moveGrandParent : MonoBehaviour {
 				Debug.Log ("destr" + timeDestroy1);
 				//Turns Skip Attack Button off after attacking
 				transform.parent.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
-				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue,timeDestroy1);
+				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue,timeDestroy1, false);
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
 			}
 		}
