@@ -27,6 +27,11 @@ public class GameController : MonoBehaviour {
 
 	public Camera mainCam;
 
+	//placementphase variables
+	public bool isPlacement = true;
+	public int germansLeft;
+	public int russiansLeft;
+
 
 	// Use this for initialization
 	void Start () {
@@ -54,27 +59,35 @@ public class GameController : MonoBehaviour {
 	//function that gets data carry values from selection scene into maingame
 	void getCarry(){
 		GameObject carry = GameObject.Find("Data Carry");
+		russiansLeft = 0; 
+		germansLeft = 0;
 		if(carry != null)
 		{
-			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT;
+			rusUnitAmount[0] = carry.GetComponent<Data_Carry>().russianAT*2;
 			rusUnitAmount[1] = carry.GetComponent<Data_Carry>().russianBomber;
 			rusUnitAmount[2] = carry.GetComponent<Data_Carry>().russianCannon;
 			rusUnitAmount[3] = carry.GetComponent<Data_Carry>().russianFighter;
 			rusUnitAmount[4] = carry.GetComponent<Data_Carry>().russianSniper;
-			rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad;
+			rusUnitAmount[5] = carry.GetComponent<Data_Carry>().russianSquad*3;
 			rusUnitAmount[6] = carry.GetComponent<Data_Carry>().t28;
 			rusUnitAmount[7] = carry.GetComponent<Data_Carry>().t34;
 			rusUnitAmount[8] = carry.GetComponent<Data_Carry>().t60;
 
 			gerUnitAmount[0] = carry.GetComponent<Data_Carry>().flak30;
-			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT;
+			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT*2;
 			gerUnitAmount[2] = carry.GetComponent<Data_Carry>().germanBomber;
 			gerUnitAmount[3] = carry.GetComponent<Data_Carry>().germanFighter;
 			gerUnitAmount[4] = carry.GetComponent<Data_Carry>().germanSniper;
-			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad;
+			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad*2;
 			gerUnitAmount[6] = carry.GetComponent<Data_Carry>().panther;
 			gerUnitAmount[7] = carry.GetComponent<Data_Carry>().panzer4;
 			gerUnitAmount[8] = carry.GetComponent<Data_Carry>().wirbelwind;
+		}
+		for (int i = 0; i< 9; i++) {
+			russiansLeft += rusUnitAmount[i];
+		}
+		for (int i = 0; i< 9; i++) {
+			germansLeft += gerUnitAmount[i];
 		}
 	}
 
@@ -86,6 +99,7 @@ public class GameController : MonoBehaviour {
 				rusUnitAdded++;
 			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 30*rusUnitAdded, 130, 20), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
+				russiansLeft--;
 				if(rusName[i] == "Russian AT"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -145,6 +159,7 @@ public class GameController : MonoBehaviour {
 			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(830, 0 + 30*gerUnitAdded, 130, 20), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
+				germansLeft--;
 
 				if(gerName[i] == "Flak30"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
@@ -209,6 +224,7 @@ public class GameController : MonoBehaviour {
 				unitFlag = false;
 			if(unitFlag)
 				unitt.transform.position = ray.origin + new Vector3(0, 0, .11f);	
+			unitt.transform.position =  new Vector3(unitt.transform.position.x, unitt.transform.position.y, 0);
 		}
 
 		if(isGameOver && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.R)))
@@ -251,10 +267,17 @@ public class GameController : MonoBehaviour {
 
 	public void turnChange (int player)
 	{
+		bool changedplayer;
+		if (playerTurn == player)
+				changedplayer = false;
+		else
+				changedplayer = true;
 		playerTurn = player;
 		unitCounter = GameObject.FindGameObjectsWithTag ("Unit");
 		for (int i = 0; i < unitCounter.Length; i++) {
-			unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
+			if(changedplayer){
+				unitCounter[i].transform.rotation *= Quaternion.AngleAxis (180, transform.right);
+			}
 			if(unitCounter[i].GetComponent<unitStatScript>().playerOwner == player)
 			{
 				unitCounter[i].GetComponent<unitStatScript>().movesRemaining = unitCounter[i].GetComponent<unitStatScript>().moves;

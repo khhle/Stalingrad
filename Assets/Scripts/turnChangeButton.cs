@@ -25,19 +25,28 @@ public class turnChangeButton : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		turnNumber = came.turnNumber;
-		switch(gameController.playerTurn)
-		{
-		case 1:
-			gameController.turnChange (2);
-			break;
-		case 2:
-			gameController.turnChange (1);
-			break;
+		//checks if it shoudl still be in placement phase
+		if(gameController.russiansLeft ==0 && gameController.germansLeft ==0){
+			//checks if they're starting the game after placement
+			if (gameController.isPlacement) {
+				gameController.turnChange (1);
+				came.turnNumber = 1;
+				gameController.isPlacement = false;
+			} else {
+				turnNumber = came.turnNumber;
+				switch (gameController.playerTurn) {
+				case 1:
+						gameController.turnChange (2);
+						break;
+				case 2:
+						gameController.turnChange (1);
+						break;
+				}
+				if (turnNumber == 1)
+						came.turnNumber = 2;
+				else if (turnNumber == 2)
+						came.turnNumber = 1;
+			}
 		}
-		if (turnNumber == 1)
-			came.turnNumber = 2;
-		else if(turnNumber == 2)
-		 	came.turnNumber = 1;
 	}
 }
