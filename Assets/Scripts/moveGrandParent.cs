@@ -20,7 +20,7 @@ public class moveGrandParent : MonoBehaviour {
 	public unitStatScript grandParentStats;
 	public GameController gameController;
 
-	private GUIText moveText;
+	public GUIText moveText;
 
 	private float x1;
 	private float y1;
@@ -46,13 +46,11 @@ public class moveGrandParent : MonoBehaviour {
 			angle = Mathf.Rad2Deg * Mathf.Atan ((y1 - grandParentStats.transform.position.y) / (x1 - grandParentStats.transform.position.x));
 			angle += 90;
 		}
-
-		moveText = new GUIText ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*if(isGreen && isClick){
+		if(isGreen && isClick){
 			 Vector3 tempPos = gameController.mainCam.WorldToScreenPoint (this.transform.position);
 			if(gameController.playerTurn == 1)
 			{
@@ -63,7 +61,9 @@ public class moveGrandParent : MonoBehaviour {
 				moveText.transform.position = new Vector2 ((tempPos.x / 960f), (tempPos.y / 600f));
 			}
 			moveText.text = "" + grandParentStats.movesRemaining;
-		}*/
+		}
+		else if ( isGreen && moveText.text != "")
+			moveText.text = "";
 
 		if (isReset == true) {
 			float x1 = this.transform.position.x;
