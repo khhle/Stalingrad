@@ -198,7 +198,7 @@ public class GameController : MonoBehaviour {
 				}
 				else if(gerName[i] == "Panzer4"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-					unitt = Instantiate(germanPanther, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
+					unitt = Instantiate(germanPanzer4, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
 				else if(gerName[i] == "Wirbelwind"){

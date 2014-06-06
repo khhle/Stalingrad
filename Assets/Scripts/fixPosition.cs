@@ -39,9 +39,7 @@ public class fixPosition : MonoBehaviour {
 			if(deci != 5 || deci != -5){
 				if(y1 > 0)
 				{
-					y1 *= 10;
-					y1 -= deci;
-					y1 = y1 /10;
+					y1 = (float) Math.Truncate(y1);
 					y1 += 0.5f;
 				}
 				else
@@ -55,7 +53,6 @@ public class fixPosition : MonoBehaviour {
 		{
 			y1 = (float)Math.Round (y1);
 		}
-		Debug.Log (x1 + " " + y1);
 		this.transform.position = new Vector3 (x1, y1, z1);
 
 

@@ -11,6 +11,7 @@ public class moveGrandParent : MonoBehaviour {
 	public bool isReset = false;
 
 	public bool isClick = false;
+	public bool recentlyClicked = false;
 
 	public bool isGreen = true;
 	public int angle_type;
@@ -18,6 +19,8 @@ public class moveGrandParent : MonoBehaviour {
 	private Color originalColor;
 	public unitStatScript grandParentStats;
 	public GameController gameController;
+
+	private GUIText moveText;
 
 	private float x1;
 	private float y1;
@@ -43,10 +46,25 @@ public class moveGrandParent : MonoBehaviour {
 			angle = Mathf.Rad2Deg * Mathf.Atan ((y1 - grandParentStats.transform.position.y) / (x1 - grandParentStats.transform.position.x));
 			angle += 90;
 		}
+
+		moveText = new GUIText ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*if(isGreen && isClick){
+			 Vector3 tempPos = gameController.mainCam.WorldToScreenPoint (this.transform.position);
+			if(gameController.playerTurn == 1)
+			{
+				moveText.transform.position = new Vector2 (tempPos.x/ 960f, tempPos.y / 600f);
+			}
+			else
+			{
+				moveText.transform.position = new Vector2 ((tempPos.x / 960f), (tempPos.y / 600f));
+			}
+			moveText.text = "" + grandParentStats.movesRemaining;
+		}*/
+
 		if (isReset == true) {
 			float x1 = this.transform.position.x;
 			float y1 = this.transform.position.y;
@@ -70,17 +88,11 @@ public class moveGrandParent : MonoBehaviour {
 			
 			isInit = true;
 		}
-		if (gameController.attackStep) {
-			transform.GetComponent<SpriteRenderer> ().material.color = new Color(1,0,0);
-		}
-		else{
-			transform.GetComponent<SpriteRenderer> ().material.color  = originalColor;
-		}
-
-		if (!isClick) {
+		else if (!isClick && recentlyClicked) {
 			float x1 = this.transform.position.x;
 			float y1 = this.transform.position.y;
 			//float z1 = this.transform.position.z;
+			recentlyClicked = false;
 			if(isCollide == false){
 				this.transform.position = new Vector3(x1,y1,20);
 			}
@@ -124,8 +136,6 @@ public class moveGrandParent : MonoBehaviour {
 		}
 		else
 		{
-			//WeaponScript weapon = GetComponent<WeaponScript> ();
-			//if (weapon != null) {
 			if (isClick == true && gameController.attackStep) {
 				grandParentStats.angle = angle;
 				grandParentStats.isRepeat = true;
@@ -137,11 +147,9 @@ public class moveGrandParent : MonoBehaviour {
 				transform.parent.parent.parent.GetComponent<unitStatScript> ().isAttacking = false;
 				grandParentStats.attackEnemy(transform.parent.GetComponent<ringScript>().rangeValue,timeDestroy1);
 				transform.parent.parent.GetComponent<hexMove>().hideMoves();
-
-					// false because the player is not an enemy
-					//weapon.Attack (false);
 			}
 		}
+		recentlyClicked = true;
 	}
 
 

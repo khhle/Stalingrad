@@ -33,7 +33,6 @@ public class unitStatScript : MonoBehaviour {
 	//keeps track of how far the unit can move
 
 	//checks if it's the player's turn to move
-	public bool activeTurn = false;
 	public bool hasAttacked = false;
 
 	//weapon stuff, previously in tank_script
@@ -75,14 +74,7 @@ public class unitStatScript : MonoBehaviour {
 
 
 		if (statText != null)
-			statText.text = attack + "  "+ health +"  " + defense;
-
-		if(gameController.playerTurn == playerOwner)
-		{
-			activeTurn = true;
-		}
-		else
-			activeTurn = false;
+			statText.text = "" + health;
 
 		if (health <= 0) {
 			Destroy(this.gameObject);

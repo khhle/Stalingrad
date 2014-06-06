@@ -59,7 +59,7 @@ public class hexMove : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
-		if( transform.parent.GetComponent<unitStatScript>().activeTurn)
+		if( parentStats.playerOwner == gameController.playerTurn)
 		{
 			foreach (Transform children in transform) {
 				Transform thisChild = children;
@@ -74,6 +74,7 @@ public class hexMove : MonoBehaviour {
 						parentStats.isAttacking = false;
 
 						movObj.isClick = false;
+						movObj.recentlyClicked = true;
 						//redhex.isClick = false;
 					}
 					else if(movObj.grandParentStats.picked)
@@ -124,6 +125,7 @@ public class hexMove : MonoBehaviour {
 				moveGrandParent movObj = child.GetComponent<moveGrandParent> ();
 				//red_hex redhex = child.GetComponent<red_hex> ();
 				movObj.isClick = false;
+				movObj.recentlyClicked = true;
 				//redhex.isClick = false;
 			}
 		}
