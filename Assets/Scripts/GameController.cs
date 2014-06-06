@@ -11,8 +11,8 @@ public class GameController : MonoBehaviour {
 	//Arrays containing number of each unit that was selected
 	private int[] rusUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 	private int[] gerUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-	private string[] rusName = {"Russian AT", "Russian Bomber", "Russian Cannon", "Russian Fighter", "Russian Sniper", "Russian Squad", "T28", "T34", "T60"};
-	private string[] gerName = {"Flak30", "German AT", "German Bomber", "German Fighter", "German Sniper", "German Squad", "Panther", "Panzer4", "Wirbelwind"};
+	private string[] rusName = {"RUS AT Infantry", "RUS Bomber", "RUS AA Infantry", "RUS Fighter", "RUS Sniper", "RUS Assault Infantry", "RUS HE Tank", "RUS AP Tank", "RUS AA Tank"};
+	private string[] gerName = {"GER AA Infantry", "GER Bomber", "GER Fighter", "GER Sniper", "GER Assault Infantry", "GER AP Tank", "GER HE Tank", "GER AA Tank"};
 
 	public GUIText playerTurnText;
 	public GUIText GameOverText;
@@ -100,17 +100,17 @@ public class GameController : MonoBehaviour {
 			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 30*rusUnitAdded, 130, 20), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
-				if(rusName[i] == "Russian AT"){
+				if(rusName[i] == "RUS AT Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "Russian Bomber"){
+				else if(rusName[i] == "RUS Bomber"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianBomber, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "Russian Cannon"){
+				else if(rusName[i] == "RUS AA Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianCannon, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
@@ -120,27 +120,27 @@ public class GameController : MonoBehaviour {
 					unitt = Instantiate(russianFighter, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "Russian Sniper"){
+				else if(rusName[i] == "RUS Sniper"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianSniper, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "Russian Squad"){
+				else if(rusName[i] == "RUS Assault Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianSquad, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "T28"){
+				else if(rusName[i] == "RUS HE Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianT28, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "T34"){
+				else if(rusName[i] == "RUS AP Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianT34, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "T60"){
+				else if(rusName[i] == "RUS AA Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianT60, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
@@ -161,47 +161,47 @@ public class GameController : MonoBehaviour {
 				gerUnitAmount[i]--;
 				germansLeft--;
 
-				if(gerName[i] == "Flak30"){
+				if(gerName[i] == "GER AA Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanFlak30, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "German AT"){
+				else if(gerName[i] == "GER AT Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "German Bomber"){
+				else if(gerName[i] == "GER Bomber"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanBomber, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "German Fighter"){
+				else if(gerName[i] == "GER Fighter"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanFighter, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "German Sniper"){
+				else if(gerName[i] == "GER Sniper"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanSniper, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "German Squad"){
+				else if(gerName[i] == "GER Assault Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanSquad, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "Panther"){
+				else if(gerName[i] == "GER AP Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanPanther, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "Panzer4"){
+				else if(gerName[i] == "GER HE Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanPanzer4, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(gerName[i] == "Wirbelwind"){
+				else if(gerName[i] == "GER AA Tank"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanWirbelwind, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
@@ -256,10 +256,10 @@ public class GameController : MonoBehaviour {
 			GameOver (1);
 		}
 		if(attackStep){
-			playerTurnText.text = "Player " + playerTurn + "'s turn: Attack Phase";
+			playerTurnText.text = "Attack Phase";
 		}
 		else{
-			playerTurnText.text = "Player " + playerTurn + "'s turn: Movement Phase";
+			playerTurnText.text = "Movement Phase";
 		}
 	}
 
