@@ -89,6 +89,7 @@ public class ShotScript : MonoBehaviour
 		ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 		if (shot != null)
 		{
+			shot.isSplash = false;
 			shot.timeDestroy = otherStats.range * 0.5f;
 			shot.shotRange = otherStats.range;
 			shot.teamNumber = otherStats.playerOwner;
