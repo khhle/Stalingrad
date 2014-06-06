@@ -5,7 +5,8 @@ public class turnChangeButton : MonoBehaviour {
 
 	private cameraRotationScript came;
 	private int turnNumber;
-
+	public Sprite ger;
+	public Sprite rus;
 	public GameController gameController;
 	// Use this for initialization
 	void Start () {
@@ -30,6 +31,7 @@ public class turnChangeButton : MonoBehaviour {
 			//checks if they're starting the game after placement
 			if (gameController.isPlacement) {
 				//change from start game to russians here
+				GetComponent<SpriteRenderer>().sprite = rus;
 				gameController.turnChange (1);
 				came.turnNumber = 1;
 				gameController.isPlacement = false;
@@ -39,10 +41,12 @@ public class turnChangeButton : MonoBehaviour {
 				case 1:
 						gameController.turnChange (2);
 					//change to german flag
+						GetComponent<SpriteRenderer>().sprite = ger;
 						break;
 				case 2:
 						gameController.turnChange (1);
 					//change to russian flag
+					GetComponent<SpriteRenderer>().sprite = rus;
 						break;
 				}
 				if (turnNumber == 1)
