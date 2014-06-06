@@ -33,6 +33,8 @@ public class WeaponScript : MonoBehaviour
 	private unitStatScript parentsStats;
 
 	private GameController gameController;
+
+	public bool hasSplash = false;
 	
 	void Start()
 	{
@@ -109,6 +111,7 @@ public class WeaponScript : MonoBehaviour
 				}else if(parentsStats.isInfantry){
 					audio.PlayOneShot(infantryshot);
 				}
+				shot.isSplash = hasSplash;
 				shot.timeDestroy = timeDestroy;
 				shot.shotRange = parentsStats.rangeClicked; //give it the range of the ring that was clicked on
 				shot.teamNumber = teamNumber;

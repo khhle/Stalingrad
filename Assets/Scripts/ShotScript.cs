@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 /// Projectile behavior
 public class ShotScript : MonoBehaviour
 {
@@ -13,13 +13,14 @@ public class ShotScript : MonoBehaviour
 	private GameController gameController;
 	public Vector2 direction;
 	public Transform shotPrefab;
+	public bool isSplash = false;
 	void Start()
 	{
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
 		}
-		Debug.Log ("time!" + timeDestroy);
+		//Debug.Log ("time!" + timeDestroy);
 		Destroy(gameObject, timeDestroy);
 	}
 
@@ -44,7 +45,14 @@ public class ShotScript : MonoBehaviour
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
 				if(!isCounter)
 					counterAttack (otherStats);
-				Destroy (gameObject);
+
+
+
+
+				if(isSplash == true)
+					StartCoroutine(waitAndCall());
+				else
+					Destroy (gameObject);
 			}
 		}else if (otherStats != null && otherStats.playerOwner == 2  && teamNumber == 1) {
 
@@ -57,7 +65,12 @@ public class ShotScript : MonoBehaviour
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
 				if(!isCounter)
 					counterAttack (otherStats);
-				Destroy (gameObject);
+
+
+				if(isSplash == true)
+					StartCoroutine(waitAndCall());
+				else
+					Destroy (gameObject);
 			}
 		}
 
@@ -94,6 +107,22 @@ public class ShotScript : MonoBehaviour
 		}
 	}
 
+
+
+	IEnumerator waitAndCall()
+	{
+
+		foreach (Transform child in transform)
+		{
+			splashScript splash = child.GetComponent<splashScript> ();
+			splash.isShowUp = true;
+			//splash damage calculate 
+			splash.attackPower = attackPower ;
+		}
+
+		yield return new WaitForSeconds (0.1f);
+		
+	}
 
 
 }
