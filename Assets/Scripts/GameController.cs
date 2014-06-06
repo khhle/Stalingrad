@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < rusUnitAmount.Length; i++){
 			if (rusUnitAmount[i] > 0)
 				rusUnitAdded++;
-			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(800, 0 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
+			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(785, 40 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
 				placed_unit = false;
@@ -159,7 +159,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < gerUnitAmount.Length; i++){
 			if (gerUnitAmount[i] > 0)
 				gerUnitAdded++;
-			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
+			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(13, 28 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
 				germansLeft--;
