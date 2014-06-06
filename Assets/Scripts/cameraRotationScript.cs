@@ -30,12 +30,12 @@ public class cameraRotationScript : MonoBehaviour {
 
 			cameraPos = Camera.main.transform.position;
 
-			/*//User is scrolling Back
+			//User is scrolling Back
 			if (Input.GetAxis("Mouse ScrollWheel") < 0 && Camera.main.orthographicSize < 10)
 				Camera.main.orthographicSize++;
 			else if(Input.GetAxis ("Mouse ScrollWheel") > 0 && Camera.main.orthographicSize > 1)
 				Camera.main.orthographicSize--;
-			*/
+			
 			if(turnNumber == 1){
 			if(Input.GetKey ("up"))
 				if(cameraPos.y < 10)
