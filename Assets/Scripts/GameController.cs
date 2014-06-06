@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	//German GameObjects
 	public GameObject germanFlak30, germanAT, germanBomber, germanFighter, germanSniper, germanSquad, germanPanther, germanPanzer4, germanWirbelwind;
 
+	public GameObject ger_warning, rus_warning;
 	//Arrays containing number of each unit that was selected
 	private int[] rusUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 	private int[] gerUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -100,6 +101,7 @@ public class GameController : MonoBehaviour {
 			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(800, 0 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
+				placed_unit = false;
 				if(rusName[i] == "RUS AT Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -161,7 +163,7 @@ public class GameController : MonoBehaviour {
 				//put prefab to mouse
 				gerUnitAmount[i]--;
 				germansLeft--;
-
+				placed_unit = false;
 				if(gerName[i] == "GER AA Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanFlak30, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -217,7 +219,14 @@ public class GameController : MonoBehaviour {
 
 	bool unitFlag = false;
 	GameObject unitt;
+	void rusWarningOff(){
+		rus_warning.guiText.enabled = false;
+	}
+	void gerWarningOff(){
+		ger_warning.guiText.enabled = false;
+	}
 
+	bool placed_unit = false;
 	// Update is called once per frame
 	void Update () {
 		Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
@@ -227,14 +236,30 @@ public class GameController : MonoBehaviour {
 				if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x >= 6.6)
 				{
 					unitFlag = false;
+					placed_unit = true;
 				}
 				else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x <= -6.6)
 				{
 					unitFlag = false;
+					placed_unit = true;
+				}else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x < 6.6 ){
+					//if russians try to place too to the left
+					if(!placed_unit){
+						rus_warning.guiText.enabled = true;
+						Invoke("rusWarningOff", 1f);
+					}
+				}else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x > -6.6){
+					//if germans try to place too to the right
+					if(!placed_unit){
+						ger_warning.guiText.enabled = true;
+						Invoke("gerWarningOff", 1f);
+					}
 				}
+
 			}
-			if(unitFlag)
+			if(unitFlag){
 				unitt.transform.position = ray.origin + new Vector3(0, 0, .11f);	
+			}
 			unitt.transform.position =  new Vector3(unitt.transform.position.x, unitt.transform.position.y, 0);
 		}
 
