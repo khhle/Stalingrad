@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f10622f08caf6645b817bf2a604480d
+guid: aecdb77727e944f4999d79baaee8010a
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -45,104 +45,95 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: TileB-3D_0
+    - name: Sprite-Soviet 3_0
       rect:
         serializedVersion: 2
-        x: 287
-        y: 384
-        width: 130
-        height: 128
+        x: 192
+        y: 642
+        width: 49
+        height: 61
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_1
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_1
       rect:
         serializedVersion: 2
-        x: 132
-        y: 384
-        width: 157
-        height: 128
+        x: 311
+        y: 654
+        width: 43
+        height: 45
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_2
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_2
       rect:
         serializedVersion: 2
-        x: 191
-        y: 32
-        width: 67
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_3
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 20
-        width: 68
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_4
-      rect:
-        serializedVersion: 2
-        x: 417
-        y: 128
-        width: 95
-        height: 128
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_5
-      rect:
-        serializedVersion: 2
-        x: 415
-        y: 382
-        width: 97
-        height: 130
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 386
-        width: 132
-        height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_7
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 62
-        width: 98
-        height: 194
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_8
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 132
-        width: 32
-        height: 28
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_9
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 164
-        width: 28
+        x: 173
+        y: 567
+        width: 60
         height: 31
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: TileB-3D_10
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_3
       rect:
         serializedVersion: 2
-        x: 257
-        y: 93
-        width: 60
-        height: 34
+        x: 291
+        y: 564
+        width: 66
+        height: 36
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_4
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 480
+        width: 132
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_5
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 472
+        width: 105
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_6
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 467
+        width: 59
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 370
+        width: 85
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_8
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 342
+        width: 204
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Sprite-Soviet 3_9
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 334
+        width: 171
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 
