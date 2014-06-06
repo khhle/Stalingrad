@@ -258,11 +258,11 @@ public class GameController : MonoBehaviour {
 		}
 		player1Units = temp1Units;
 		player2Units = temp2Units;
-		if (player1Units == 0 && !placement)
+		if (player1Units == 0 && !isPlacement)
 		{
 			GameOver (2);
 		}
-		else if( player2Units == 0 && !placement)
+		else if( player2Units == 0 && !isPlacement)
 		{
 			GameOver (1);
 		}
