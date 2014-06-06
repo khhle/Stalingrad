@@ -29,6 +29,7 @@ public class turnChangeButton : MonoBehaviour {
 		if(gameController.russiansLeft ==0 && gameController.germansLeft ==0){
 			//checks if they're starting the game after placement
 			if (gameController.isPlacement) {
+				//change from start game to russians here
 				gameController.turnChange (1);
 				came.turnNumber = 1;
 				gameController.isPlacement = false;
@@ -37,9 +38,11 @@ public class turnChangeButton : MonoBehaviour {
 				switch (gameController.playerTurn) {
 				case 1:
 						gameController.turnChange (2);
+					//change to german flag
 						break;
 				case 2:
 						gameController.turnChange (1);
+					//change to russian flag
 						break;
 				}
 				if (turnNumber == 1)
