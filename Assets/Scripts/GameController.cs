@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 	private int[] rusUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 	private int[] gerUnitAmount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 	private string[] rusName = {"RUS AT Infantry", "RUS Bomber", "RUS AA Infantry", "RUS Fighter", "RUS Sniper", "RUS Assault Infantry", "RUS HE Tank", "RUS AP Tank", "RUS AA Tank"};
-	private string[] gerName = {"GER AA Infantry", "GER Bomber", "GER Fighter", "GER Sniper", "GER Assault Infantry", "GER AP Tank", "GER HE Tank", "GER AA Tank"};
+	private string[] gerName = {"GER AT Infantry", "GER Bomber", "GER AA Infantry", "GER Fighter", "GER Sniper", "GER Assault Infantry", "GER AP Tank", "GER HE Tank", "GER AA Tank"};
 
 	public GUIText playerTurnText;
 	public GUIText GameOverText;
@@ -73,9 +73,9 @@ public class GameController : MonoBehaviour {
 			rusUnitAmount[7] = carry.GetComponent<Data_Carry>().t34;
 			rusUnitAmount[8] = carry.GetComponent<Data_Carry>().t60;
 
-			gerUnitAmount[0] = carry.GetComponent<Data_Carry>().flak30;
-			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanAT*2;
-			gerUnitAmount[2] = carry.GetComponent<Data_Carry>().germanBomber;
+			gerUnitAmount[0] = carry.GetComponent<Data_Carry>().germanAT;
+			gerUnitAmount[1] = carry.GetComponent<Data_Carry>().germanBomber;
+			gerUnitAmount[2] = carry.GetComponent<Data_Carry>().flak30;
 			gerUnitAmount[3] = carry.GetComponent<Data_Carry>().germanFighter;
 			gerUnitAmount[4] = carry.GetComponent<Data_Carry>().germanSniper;
 			gerUnitAmount[5] = carry.GetComponent<Data_Carry>().germanSquad*2;
@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < rusUnitAmount.Length; i++){
 			if (rusUnitAmount[i] > 0)
 				rusUnitAdded++;
-			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 30*rusUnitAdded, 130, 20), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
+			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
 				if(rusName[i] == "RUS AT Infantry"){
@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < gerUnitAmount.Length; i++){
 			if (gerUnitAmount[i] > 0)
 				gerUnitAdded++;
-			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(830, 0 + 30*gerUnitAdded, 130, 20), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
+			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(800, 0 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
 				germansLeft--;
@@ -207,7 +207,7 @@ public class GameController : MonoBehaviour {
 					unitFlag = true;
 				}
 
-				if(rusUnitAmount[i] == 0)
+				if(gerUnitAmount[i] == 0)
 					gerUnitAdded--;
 			}
 		}

@@ -14,11 +14,11 @@ public class flagScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(teamNumber == 1)
-			GetComponent<SpriteRenderer>().sprite = rus;
-		else if(teamNumber == 2)
-			GetComponent<SpriteRenderer>().sprite = ger;
-		//else
-
+		if (teamNumber == 1)
+			GetComponent<SpriteRenderer> ().sprite = rus;
+		else if (teamNumber == 2)
+			GetComponent<SpriteRenderer> ().sprite = ger;
+		else if (teamNumber == 3)
+			GetComponent<SpriteRenderer> ().enabled = false;
 	}
 }

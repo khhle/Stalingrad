@@ -142,7 +142,8 @@ public class UnitSelection : MonoBehaviour {
 
 
 		if (isPlayer1){
-			flag.teamNumber = 1;
+			if (flag.teamNumber != 3)
+				flag.teamNumber = 1;
 			RussianAT_offscreen1 = new Rect(280, 75, 135, 40);
 			RussianBomber_offscreen1 = new Rect(415, 75, 135, 40);
 			RussianCannon_offscreen1 = new Rect(550, 75, 135, 40);
@@ -167,7 +168,8 @@ public class UnitSelection : MonoBehaviour {
 			GT_player2.renderer.material.color = Color.red;
 		}
 		if (isPlayer2) {
-			flag.teamNumber = 2;
+			if (flag.teamNumber != 3)
+				flag.teamNumber = 2;
 			Flak30_offscreen1 = new Rect(280, 75, 135, 40);
 			GermanAT_offscreen1 = new Rect(415, 75, 135, 40);
 			GermanBomber_offscreen1 = new Rect(550, 75, 135, 40);
@@ -192,6 +194,7 @@ public class UnitSelection : MonoBehaviour {
 		}
 
 		if(player1_Credits == 0 && player2_Credits == 0){
+			flag.teamNumber = 3;
 			GT_battleBegin.guiText.enabled = true;
 		}
 
