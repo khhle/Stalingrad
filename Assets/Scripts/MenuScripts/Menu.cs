@@ -27,5 +27,7 @@ public class Menu : MonoBehaviour {
 			else
 				lastTip = "play";
 		}
+
+
 	}
 }

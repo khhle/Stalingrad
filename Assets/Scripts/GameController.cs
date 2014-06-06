@@ -146,6 +146,7 @@ public class GameController : MonoBehaviour {
 					unitFlag = true;
 				}
 
+
 				if(rusUnitAmount[i] == 0)
 					rusUnitAdded--;
 			}
@@ -206,6 +207,7 @@ public class GameController : MonoBehaviour {
 					unitt = Instantiate(germanWirbelwind, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
+
 
 				if(gerUnitAmount[i] == 0)
 					gerUnitAdded--;
