@@ -115,7 +115,7 @@ public class GameController : MonoBehaviour {
 					unitt = Instantiate(russianCannon, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
 				}
-				else if(rusName[i] == "Russian Fighter"){
+				else if(rusName[i] == "RUS Fighter"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianFighter, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
 					unitFlag = true;
