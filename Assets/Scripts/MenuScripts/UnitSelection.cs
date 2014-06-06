@@ -462,7 +462,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianAT button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianAT_offscreen1, new GUIContent("RUS AT Infantry\n$7500", "RussianAT"))){
 			if(selectUnit(0) && unitIconMade[0] == false){
-				RussianAT_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianAT_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[0] = true;
 			}
 		}
@@ -482,7 +482,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianBomber button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianBomber_offscreen1, new GUIContent("RUS Bomber\n$7500", "RussianBomber"))){
 			if(selectUnit(1) && unitIconMade[1] == false){
-				RussianBomber_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianBomber_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[1] = true;
 			}
 		}
@@ -502,7 +502,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianCannon button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianCannon_offscreen1, new GUIContent("RUS AA Infantry\n$7500", "RussianCannon"))){
 			if(selectUnit(2) && unitIconMade[2] == false){
-				RussianCannon_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianCannon_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[2] = true;
 			}
 		}
@@ -522,7 +522,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianFighter button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianFighter_offscreen1, new GUIContent("RUS Fighter\n$7500", "RussianFighter"))){
 			if(selectUnit(3) && unitIconMade[3] == false){
-				RussianFighter_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianFighter_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[3] = true;
 			}
 		}
@@ -541,7 +541,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianSniper button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianSniper_offscreen1, new GUIContent("RUS Sniper\n$2500", "RussianSniper"))){
 			if(selectUnit(4) && unitIconMade[4] == false){
-				RussianSniper_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianSniper_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[4] = true;
 			}
 		}
@@ -560,7 +560,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the RussianSquad button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (RussianSquad_offscreen1, new GUIContent("RUS Assault Infantry\n$7500", "RussianSquad"))){
 			if(selectUnit(5) && unitIconMade[5] == false){
-				RussianSquad_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				RussianSquad_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[5] = true;
 			}
 		}
@@ -579,7 +579,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the t28 button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (t28_offscreen1, new GUIContent("RUS HE Tank\n$7500", "t28"))){
 			if(selectUnit(6) && unitIconMade[6] == false){
-				t28_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				t28_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[6] = true;
 			}
 		}
@@ -599,7 +599,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the t34 button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (t34_offscreen1, new GUIContent("RUS AP Tank\n$5000", "t34"))){
 			if(selectUnit(7) && unitIconMade[7] == false){
-				t34_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				t34_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[7] = true;
 			}
 		}
@@ -619,7 +619,7 @@ public class UnitSelection : MonoBehaviour {
 		// Make the t60 button and if its clicked purchase it!
 		if (isPlayer1 && GUI.Button (t60_offscreen1, new GUIContent("RUS AA Tank\n$5000", "t60"))){
 			if(selectUnit(8) && unitIconMade[8] == false){
-				t60_offscreen2 = new Rect(60, yCoordSelectionP1, 130, 20);
+				t60_offscreen2 = new Rect(60, yCoordSelectionP1, 155, 20);
 				unitIconMade[8] = true;
 			}
 		}
@@ -640,7 +640,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the Flak30 button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (Flak30_offscreen1, new GUIContent("GER AA Infantry\n$10000", "Flak30"))){
 			if(selectUnit(9) && unitIconMade[9] == false){
-				Flak30_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				Flak30_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[9] = true;
 			}
 		}
@@ -660,7 +660,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the GermanAT button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (GermanAT_offscreen1, new GUIContent("GER AT Infantry\n$10000", "GermanAT"))){
 			if(selectUnit(10) && unitIconMade[10] == false){
-				GermanAT_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				GermanAT_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[10] = true;
 			}
 		}
@@ -680,7 +680,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the GermanBomber button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (GermanBomber_offscreen1, new GUIContent("GER Bomber\n$10000", "GermanBomber"))){
 			if(selectUnit(11) && unitIconMade[11] == false){
-				GermanBomber_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				GermanBomber_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[11] = true;
 			}
 		}
@@ -700,7 +700,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the GermanFighter button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (GermanFighter_offscreen1, new GUIContent("GER Fighter\n$10000", "GermanFighter"))){
 			if(selectUnit(12) && unitIconMade[12] == false){
-				GermanFighter_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				GermanFighter_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[12] = true;
 			}
 		}
@@ -720,7 +720,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the GermanSniper button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (GermanSniper_offscreen1, new GUIContent("GER Sniper\n$10000", "GermanSniper"))){
 			if(selectUnit(13) && unitIconMade[13] == false){
-				GermanSniper_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				GermanSniper_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[13] = true;
 			}
 		}
@@ -740,7 +740,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the GermanSquad button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (GermanSquad_offscreen1, new GUIContent("GER Assualt Infantry\n$10000", "GermanSquad"))){
 			if(selectUnit(14) && unitIconMade[14] == false){
-				GermanSquad_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				GermanSquad_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[14] = true;
 			}
 		}
@@ -760,7 +760,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the panther button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (panther_offscreen1, new GUIContent("GER AP Tank\n$10000", "panther"))){
 			if(selectUnit(15) && unitIconMade[15] == false){
-				panther_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				panther_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[15] = true;
 			}
 		}
@@ -780,7 +780,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the Panzer4 button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (Panzer4_offscreen1, new GUIContent("GER HE Tank\n$10000", "Panzer4"))){
 			if(selectUnit(16) && unitIconMade[16] == false){
-				Panzer4_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				Panzer4_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[16] = true;
 			}
 		}
@@ -800,7 +800,7 @@ public class UnitSelection : MonoBehaviour {
 		//Make the Wirbelwind button and if its clicked purchase it!
 		if (isPlayer2 && GUI.Button (Wirbelwind_offscreen1, new GUIContent("GER AA Tank\n$10000", "Wirbelwind"))){
 			if(selectUnit(17) && unitIconMade[17] == false){
-				Wirbelwind_offscreen2 = new Rect(765, yCoordSelectionP2, 130, 20);
+				Wirbelwind_offscreen2 = new Rect(765, yCoordSelectionP2, 155, 20);
 				unitIconMade[17] = true;
 			}
 		}
