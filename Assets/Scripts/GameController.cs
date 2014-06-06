@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < rusUnitAmount.Length; i++){
 			if (rusUnitAmount[i] > 0)
 				rusUnitAdded++;
-			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
+			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(800, 0 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
 				if(rusName[i] == "RUS AT Infantry"){
@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < gerUnitAmount.Length; i++){
 			if (gerUnitAmount[i] > 0)
 				gerUnitAdded++;
-			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(800, 0 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
+			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(0, 0 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
 				germansLeft--;
@@ -221,7 +221,16 @@ public class GameController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		if(unitt != null){
 			if(Input.GetMouseButtonDown(0))
-				unitFlag = false;
+			{
+				if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x >= 6.6)
+				{
+					unitFlag = false;
+				}
+				else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x <= -6.6)
+				{
+					unitFlag = false;
+				}
+			}
 			if(unitFlag)
 				unitt.transform.position = ray.origin + new Vector3(0, 0, .11f);	
 			unitt.transform.position =  new Vector3(unitt.transform.position.x, unitt.transform.position.y, 0);
@@ -255,7 +264,11 @@ public class GameController : MonoBehaviour {
 		{
 			GameOver (1);
 		}
-		if(attackStep){
+		// settingphase text
+		if (isPlacement) {
+			playerTurnText.text = "Placement Phase: Nazis place in the West, Soviets in the East";
+		}
+		else if(attackStep){
 			playerTurnText.text = "Attack Phase";
 		}
 		else{

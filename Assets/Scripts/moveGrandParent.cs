@@ -157,22 +157,41 @@ public class moveGrandParent : MonoBehaviour {
 			return;
 
 		stone_script stone = coll.gameObject.GetComponent<stone_script> ();
+		/*unitStatScript collStats = coll.gameObject.GetComponent<unitStatScript> ();
+		hexMove hexColl = coll.gameObject.GetComponent<hexMove> ();*/
 		if (stone != null) {
-						//Debug.Log ("Collide!");
-						if (isClick == true) {
-								isCollide = true;
-					
-						}
+			//Debug.Log ("Collide!");
+			if (isClick == true) {
+				isCollide = true;
+		
+			}
 
-						if (isClick == true && isInitCollide == false) {
-								float x1 = this.transform.position.x;
-								float y1 = this.transform.position.y;
-								float z1 = this.transform.position.z;
-								//Debug.Log ("z= " + z1);
-								this.transform.position = new Vector3 (x1, y1, z1 + 20);//0
-								isInitCollide = true;
-						}
-				}
+			if (isClick == true && isInitCollide == false) {
+				float x1 = this.transform.position.x;
+				float y1 = this.transform.position.y;
+				float z1 = this.transform.position.z;
+				//Debug.Log ("z= " + z1);
+				this.transform.position = new Vector3 (x1, y1, z1 + 20);//0
+				isInitCollide = true;
+			}
+		}
+
+		/*if ((collStats != null || hexColl != null) && isGreen) {
+			//Debug.Log ("Collide!");
+			if (isClick == true) {
+				isCollide = true;
+				
+			}
+			
+			if (isClick == true && isInitCollide == false) {
+				float x1 = this.transform.position.x;
+				float y1 = this.transform.position.y;
+				float z1 = this.transform.position.z;
+				//Debug.Log ("z= " + z1);
+				this.transform.position = new Vector3 (x1, y1, z1 + 20);//0
+				isInitCollide = true;
+			}
+		}*/
 
 	}
 

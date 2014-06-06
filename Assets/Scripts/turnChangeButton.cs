@@ -11,6 +11,7 @@ public class turnChangeButton : MonoBehaviour {
 	private Color mouseOverColor = Color.red;
 	private Color originalColor ;
 	private flagScript flag;
+	private GameObject compass;
 	// Use this for initialization
 	void Start () {
 		came = GameObject.Find("Render").GetComponent<cameraRotationScript>();
@@ -19,6 +20,7 @@ public class turnChangeButton : MonoBehaviour {
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent <GameController>();
 		}
+		compass = GameObject.Find ("Compass");
 		 	
 	}
 	
@@ -58,12 +60,14 @@ public class turnChangeButton : MonoBehaviour {
 						gameController.turnChange (2);
 					//change to german flag
 						//GetComponent<SpriteRenderer>().sprite = ger;
+					compass.transform.Rotate(new Vector3(0,0,180));
 						flag.teamNumber = 2;
 						break;
 				case 2:
 						gameController.turnChange (1);
 					//change to russian flag
 					//GetComponent<SpriteRenderer>().sprite = rus;
+					compass.transform.Rotate(new Vector3(0,0,180));
 					flag.teamNumber = 1;
 						break;
 				}
