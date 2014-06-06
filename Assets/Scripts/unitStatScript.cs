@@ -84,14 +84,14 @@ public class unitStatScript : MonoBehaviour {
 
 	//creates a button to skip movement phase
 	void OnGUI(){
-		if (isMoving && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nMovement Phase", "moveTag"))) {
+		if (isMoving && GUI.Button(new Rect(13, 28, 125, 50), new GUIContent("Skip\nMovement Phase", "moveTag"))) {
 			gameController.attackStep = true;
 			isMoving = false;
 			gameController.hideAllMoves();
 			picked = true;
 			gameController.pickedObject(this);
 		}
-		else if (!hasAttacked && isAttacking && GUI.Button(new Rect(100, 125, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
+		else if (!hasAttacked && isAttacking && GUI.Button(new Rect(13, 28, 125, 50), new GUIContent("Skip\nAttack Phase", "moveTag"))) {
 			hasAttacked = true;
 			isAttacking = false;
 			gameController.hideAllMoves();
