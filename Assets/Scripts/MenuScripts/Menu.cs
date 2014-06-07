@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour {
 	private string lastTip = "";
 	public GUIText instr;
 	public GUIStyle start;
+	public AudioClip fire;
 	// Use this for initialization
 	void Start () {
 
@@ -15,10 +16,13 @@ public class Menu : MonoBehaviour {
 	void Update () {
 	
 	}
-
+	void play_game(){
+		Application.LoadLevel("Selection");
+	}
 	void OnGUI(){
 		if(GUI.Button (new Rect (790, 520, 100, 50), "", start)){
-			Application.LoadLevel("Selection");
+			audio.PlayOneShot (fire);
+			Invoke ("play_game", 1f);
 		}
 		if(Event.current.type == EventType.Repaint && GUI.tooltip != lastTip){
 			if (GUI.tooltip == "play")
