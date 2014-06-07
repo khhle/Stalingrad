@@ -3,7 +3,6 @@ using System.Collections;
 /// Projectile behavior
 public class ShotScript : MonoBehaviour
 {
-	unitStatScript otherStats;
 	private GUIText temp1, temp2;
 	private int damageDealt;
 
@@ -37,7 +36,7 @@ public class ShotScript : MonoBehaviour
 			Destroy (gameObject);
 		}
 		//this is where the damage calculations take place. otherStats is the enemy unit's stats
-		otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
+		unitStatScript otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
 		if (otherStats != null && otherStats.playerOwner == 1 && teamNumber == 2 ) {
 
 			if((otherStats.isTank && parentsStats.canShootTank) || (otherStats.isPlane && parentsStats.canShootPlane)
