@@ -276,8 +276,27 @@ public class hexMove : MonoBehaviour {
 			default:
 				break;
 		}
-
 	}
+
+	/*void OnTriggerEnter2D(Collider2D otherCollider){ 
+		stone_script stone = otherCollider.gameObject.GetComponent<stone_script> ();
+		if (stone != null) {
+			//Debug.Log ("Collide stone!");	
+			parentStats.canPlace = false;
+		}else{
+			hexMove otherHexMove = otherCollider.gameObject.GetComponent<hexMove> ();
+			if (otherHexMove != null) {
+				parentStats.canPlace = false;
+			}
+			else
+				parentStats.canPlace = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D otherCollider)
+	{
+		parentStats.canPlace = true;
+	}*/
 
 
 }

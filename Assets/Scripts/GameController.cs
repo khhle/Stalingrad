@@ -237,13 +237,13 @@ public class GameController : MonoBehaviour {
 		if(unitt != null){
 			if(Input.GetMouseButtonDown(0))
 			{
-				if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x >= 6.6)
+				if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x >= 6.6 && unitt.transform.GetComponent<unitStatScript>().canPlace)
 				{
 					unitFlag = false;
 					placed_unit = true;
 					selecting = false;
 				}
-				else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x <= -6.6)
+				else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x <= -6.6 && unitt.transform.GetComponent<unitStatScript>().canPlace)
 				{
 					unitFlag = false;
 					placed_unit = true;
@@ -361,6 +361,22 @@ public class GameController : MonoBehaviour {
 		isGameOver = true;
 		GameOverText.text = "Player " + winner + " wins!\n" +
 						"Press 'R' to begin a new game";
+		if(GameObject.FindGameObjectWithTag ("KongregateAPI") != null)
+		{
+			KongregateAPI Kong = GameObject.FindGameObjectWithTag("KongregateAPI").GetComponent<KongregateAPI>();
+			if(Kong.Connected)
+			{
+				if(winner == 1){
+
+					Kong.Submit("Russians Win", 1);
+				}
+				if(winner == 2){
+					
+					Kong.Submit("Germans Win", 1 );
+				}
+			}
+		}
+
 	}
 
 

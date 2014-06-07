@@ -8,6 +8,7 @@ public class unitStatScript : MonoBehaviour {
 
 	public bool isMoving = false;
 	public bool isAttacking = false;
+	public bool canPlace = true;
 
 	public int playerOwner;
 	public int attack;
