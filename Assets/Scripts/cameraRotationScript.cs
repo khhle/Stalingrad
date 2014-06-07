@@ -8,7 +8,9 @@ public class cameraRotationScript : MonoBehaviour {
 	private Animator animator;
 	public int turnNumber = 1;
 	private int oldTurn = 7;
-	//khan is a khan
+
+	public GameObject hud, flag, turnChange, compass;
+
 	void Awake()
 	{
 		// ...
@@ -31,11 +33,24 @@ public class cameraRotationScript : MonoBehaviour {
 			cameraPos = Camera.main.transform.position;
 
 			//User is scrolling Back
-			if (Input.GetAxis("Mouse ScrollWheel") < 0 && Camera.main.orthographicSize < 10)
+			if (Input.GetAxis("Mouse ScrollWheel") < 0 && Camera.main.orthographicSize < 10){
 				Camera.main.orthographicSize++;
-			else if(Input.GetAxis ("Mouse ScrollWheel") > 0 && Camera.main.orthographicSize > 1)
+				hud.transform.localScale += new Vector3(.5f,.5f,0);
+				flag.GetComponent<SpriteRenderer>().enabled = false;
+				turnChange.GetComponent<SpriteRenderer>().enabled = false;
+				compass.GetComponent<SpriteRenderer>().enabled = false;
+			}
+			else if(Input.GetAxis ("Mouse ScrollWheel") > 0 && Camera.main.orthographicSize > 5){
 				Camera.main.orthographicSize--;
+				hud.transform.localScale -= new Vector3(.5f,.5f,0);
+			}
 			
+			if (Camera.main.orthographicSize == 5){
+				flag.GetComponent<SpriteRenderer>().enabled = true;
+				turnChange.GetComponent<SpriteRenderer>().enabled = true;
+				compass.GetComponent<SpriteRenderer>().enabled = true;
+			}
+
 			if(turnNumber == 1){
 			if(Input.GetKey ("up"))
 				if(cameraPos.y < 10)
@@ -64,6 +79,40 @@ public class cameraRotationScript : MonoBehaviour {
 				if(cameraPos.x > -15)
 					cameraPos.x-= 0.25f;
 
+			}
+
+			if(turnNumber == 1){
+				if(Input.mousePosition.x > Screen.width - .1f){
+					if(cameraPos.x < 15)
+						cameraPos.x+= .25f;
+				}else if(Input.mousePosition.x < .1f){
+					if(cameraPos.x > -15)
+						cameraPos.x-= .25f;
+				}
+
+				if(Input.mousePosition.y > Screen.height - .1f){
+					if(cameraPos.y < 10)
+						cameraPos.y+= .25f;
+				}else if(Input.mousePosition.y < .1f){
+					if(cameraPos.y > -10)
+						cameraPos.y-= .25f;
+				}
+			}else{
+				if(Input.mousePosition.x > Screen.width - .1f){
+					if(cameraPos.x > -15)
+						cameraPos.x-= .25f;
+				}else if(Input.mousePosition.x < .1f){
+					if(cameraPos.x < 15)
+						cameraPos.x+= .25f;
+				}
+
+				if(Input.mousePosition.y > Screen.height - .1f){
+					if(cameraPos.y > -10)
+						cameraPos.y-= .25f;
+				}else if(Input.mousePosition.y < .1f){
+					if(cameraPos.y < 10)
+						cameraPos.y+= .25f;
+				}
 			}
 			
 			Camera.main.transform.position = cameraPos;
