@@ -4,10 +4,11 @@ using System.Collections;
 public class Menu : MonoBehaviour {
 	public AudioClip hoverOver;
 	private string lastTip = "";
-
+	public GUIText instr;
+	public GUIStyle start;
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -16,7 +17,7 @@ public class Menu : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(GUI.Button (new Rect (430, 275, 100, 50), new GUIContent("PLAY", "play"))){
+		if(GUI.Button (new Rect (790, 520, 100, 50), "", start)){
 			Application.LoadLevel("Selection");
 		}
 		if(Event.current.type == EventType.Repaint && GUI.tooltip != lastTip){
