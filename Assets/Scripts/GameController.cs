@@ -92,16 +92,19 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	private bool selecting = false;
+
 	void OnGUI(){
 		int rusUnitAdded = -1;
 		//Russian Units
 		for(int i = 0; i < rusUnitAmount.Length; i++){
 			if (rusUnitAmount[i] > 0)
 				rusUnitAdded++;
-			if (rusUnitAmount[i] > 0 && GUI.Button (new Rect(785, 40 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
+			if (!selecting && rusUnitAmount[i] > 0 && GUI.Button (new Rect(785, 40 + 40*rusUnitAdded, 160, 30), new GUIContent(rusName[i] + " x" + rusUnitAmount[i]))){
 				rusUnitAmount[i]--;
 				russiansLeft--;
 				placed_unit = false;
+				selecting = true;
 				if(rusName[i] == "RUS AT Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(russianAT, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -159,11 +162,12 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < gerUnitAmount.Length; i++){
 			if (gerUnitAmount[i] > 0)
 				gerUnitAdded++;
-			if (gerUnitAmount[i] > 0 && GUI.Button (new Rect(13, 28 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
+			if (!selecting && gerUnitAmount[i] > 0 && GUI.Button (new Rect(13, 28 + 40*gerUnitAdded, 160, 30), new GUIContent(gerName[i]  + " x" + gerUnitAmount[i]))){
 				//put prefab to mouse
 				gerUnitAmount[i]--;
 				germansLeft--;
 				placed_unit = false;
+				selecting = true;
 				if(gerName[i] == "GER AA Infantry"){
 					Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 					unitt = Instantiate(germanFlak30, ray.origin + new Vector3(0, 0, 1f), Quaternion.identity) as GameObject;
@@ -237,11 +241,13 @@ public class GameController : MonoBehaviour {
 				{
 					unitFlag = false;
 					placed_unit = true;
+					selecting = false;
 				}
 				else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 2 && ray.origin.x <= -6.6)
 				{
 					unitFlag = false;
 					placed_unit = true;
+					selecting = false;
 				}else if(unitt.transform.GetComponent<unitStatScript>().playerOwner == 1 && ray.origin.x < 6.6 ){
 					//if russians try to place too to the left
 					if(!placed_unit){

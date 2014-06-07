@@ -3,6 +3,10 @@ using System.Collections;
 /// Projectile behavior
 public class ShotScript : MonoBehaviour
 {
+	unitStatScript otherStats;
+	private GUIText temp1, temp2;
+	private int damageDealt;
+
 	public int attackPower;
 	public int teamNumber;
 	public bool isCounter = false;
@@ -24,6 +28,7 @@ public class ShotScript : MonoBehaviour
 		Destroy(gameObject, timeDestroy);
 	}
 
+
 	void OnTriggerEnter2D(Collider2D otherCollider){ 
 		stone_script stone = otherCollider.gameObject.GetComponent<stone_script> ();
 		if (stone != null) {
@@ -32,7 +37,7 @@ public class ShotScript : MonoBehaviour
 			Destroy (gameObject);
 		}
 		//this is where the damage calculations take place. otherStats is the enemy unit's stats
-		unitStatScript otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
+		otherStats = otherCollider.gameObject.GetComponent<unitStatScript> ();
 		if (otherStats != null && otherStats.playerOwner == 1 && teamNumber == 2 ) {
 
 			if((otherStats.isTank && parentsStats.canShootTank) || (otherStats.isPlane && parentsStats.canShootPlane)
@@ -40,8 +45,11 @@ public class ShotScript : MonoBehaviour
 			{
 				//deals damage equal to this attack power minus arandom value of defense.
 				int tempDefense = Random.Range (0, otherStats.defense);
-				if(attackPower > tempDefense)
-					otherStats.health -= (attackPower - tempDefense);
+				if(attackPower > tempDefense){
+					damageDealt = attackPower - tempDefense;
+					otherStats.statText.color = Color.red;
+					otherStats.health -= damageDealt;
+				}
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
 				if(!isCounter)
 					counterAttack (otherStats);
@@ -60,8 +68,11 @@ public class ShotScript : MonoBehaviour
 				   || (otherStats.isInfantry && parentsStats.canShootInfantry)){
 				//deals damage equal to this attack power minus arandom value of defense.
 				int tempDefense = Random.Range (0, otherStats.defense);
-				if(attackPower > tempDefense)
-					otherStats.health -= (attackPower - tempDefense);
+				if(attackPower > tempDefense){
+					damageDealt = attackPower - tempDefense;
+					otherStats.statText.color = Color.red;
+					otherStats.health -= damageDealt;
+				}
 				SpecialEffectsHelper.Instance.Explosion (transform.position);
 				if(!isCounter)
 					counterAttack (otherStats);
